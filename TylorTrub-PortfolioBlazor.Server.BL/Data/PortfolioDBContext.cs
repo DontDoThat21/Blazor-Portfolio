@@ -213,7 +213,7 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                 new PortfolioImage
                 {
                     Id = 1,
-                    DisplayText = "I have managed and upgraded software systems in Los Angeles, Tennessee," +
+                    DisplayText = "I have upgraded and managed software systems in Los Angeles, Tennessee," +
                     " and Detroit. Warehousing software work and various improvements ranges from the initial" +
                     " definition of what is included in a show, to the logistical transportation of goods to" +
                     " the show itself all through intranet software.",
