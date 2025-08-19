@@ -1,31 +1,56 @@
-﻿@using TylorTrubPortfolioBlazor.DTO.Models
+﻿@using System.Diagnostics
+@using TylorTrubPortfolioBlazor.DTO.Models
 @inject NavigationManager nav
 
 <div class="container">
-    <h1>Motorcycle Store - New and used Bikes</h1>
+    <h1 class="centered-nav text-info m-4 border-3 rounded-pill border-primary">Motorcycle Store - New and used Bikes</h1>
 
-    <MudSimpleTable id="tblData" class="table table-bordered table-striped">
-        <thead>
+    <MudSimpleTable id="tblData" class="table table-bordered table-striped rounded-2 border-2 border-light">
+        <thead class="bg-dark text-primary">
             <tr>
                 <th>Motorcycle</th>
                 <th>Manufacturer</th>
                 <th>Engine CCs</th>
+                <th>Brakes</th>
+                <th>Engine Style</th>
+                <th>HP</th>
+                <td>Torque</td>
                 <th>Image</th>
                 <th>Year</th>
                 <th></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="">
+            @{ int index = 0; }
             @foreach (Motorcycle motorcycle in motorcycles)
             {
-                <tr>
+                if(index % 2 == 0)
+                {
+                    Debug.WriteLine("Even");
+
+                    <tr class="bg-black">
+
+                    </tr>
+                }
+                else
+                {
+                    Debug.WriteLine("Odd");
+
+                    <tr class="bg-light">
+
+                    </tr>
+                }
                     <td>@motorcycle.MotorcycleName</td>
                     <td>@motorcycle.Manufacturer</td>
                     <td>@motorcycle.MotorcycleCc</td>
+                    <td>@motorcycle.Brakes</td>
+                    <td>@motorcycle.EngineStyle</td>
+                    <td>@motorcycle.Hp</td>
+                    <td>@motorcycle.Torque</td>
                     <td><img src="Images/Home/Motorcycle/@motorcycle.Picture" width="356px" height="200px" class="border-0 rounded" @onclick="() => RedirectToDetails(motorcycle)" /></td>
                     <td>@motorcycle.Year</td>
                     <td><MudButton Style="background: orange;" @onclick="() => RedirectToDetails(motorcycle)">BUY</MudButton></td>
-                </tr>
+                { index++; }
             }
         </tbody>
     </MudSimpleTable>
