@@ -213,10 +213,9 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                 new PortfolioImage
                 {
                     Id = 1,
-                    DisplayText = "I have managed and upgraded software systems in Los Angeles, Tennessee," +
-                    " and Detroit. Warehousing software work and various improvements ranges from the initial" +
-                    " definition of what is included in a show, to the logistical transportation of goods to" +
-                    " the show itself all through intranet software.",
+                    DisplayText = "I have managed and upgraded software systems in Los Angeles, Tennessee, and Detroit." +
+                    " Warehousing software work and various improvements ranges from the initial definition of what is included in a show," +
+                    " to the logistical transportation of goods to the show itself all through intranet software.",
                     FileName = "home1.jpg",
                     Name = "LA Flight View Home 1"
                 });
@@ -225,8 +224,9 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                new PortfolioImage
                {
                    Id = 2,
-                   DisplayText = "Working closely with shop carpenters and foreman, creating tailored applications was an exciting opportunity to grow" +
-                   "as a developer, and as a solutions architect.",
+                   DisplayText = "Working closely with shop carpenters and foreman," +
+                   " creating tailored applications was an exciting opportunity to growas a developer," +
+                   " and as a solutions architect.",
                    FileName = "homecawork2.jpg",
                    Name = "CA Work Warehouse 1"
                });
@@ -235,8 +235,8 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                new PortfolioImage
                {
                    Id = 3,
-                   DisplayText = "I maintained, improved, and created paint management software " +
-                   "as a developer, and as a solutions architect.",
+                   DisplayText = "I maintained, improved, and created paint management software as a developer," +
+                   " and as a solutions architect.",
                    FileName = "homemiwork1.jpg",
                    Name = "MI Work Paint 1"
                });
@@ -245,8 +245,8 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                 new PortfolioImage
                 {
                     Id = 4,
-                    DisplayText = "I've built many desktops, but this has to be my most nostalgic build. " +
-                    "A roughly rummaged together yet powerful machine to get the job done well is sometimes all it takes!",
+                    DisplayText = "I've built many desktops, but this has to be my most nostalgic build." +
+                    " A roughly rummaged together yet powerful machine to get the job done well is sometimes all it takes!",
                     FileName = "homedesktopcustom1.jpg",
                     Name = "Desktop MI Desktop AH 1"
                 });
@@ -296,8 +296,9 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                 new PortfolioImage
                 {
                     Id = 9,
-                    DisplayText = "As a teen, I moved to North Carolina with my family to finish school and continue " +
-                    "my education towards being a software developer. NC being known for it's hills, I was quite the avid skateboarder.",
+                    DisplayText = "As a teen, I moved to North Carolina with my family to finish school " +
+                    "and continue my education towards being a software developer. " +
+                    "NC being known for it's hills, I was an avid skateboarder.",
                     FileName = "home2.jpg",
                     Name = "Home 2"
                 }); ;
@@ -306,9 +307,9 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                 new PortfolioImage
                 {
                     Id = 10,
-                    DisplayText = "Motorcycling is a big hobby of mine. As you scroll down, " +
-                    "you will see more of my travels, what I like to do for fun," +
-                    "and core pieces of who I am.",
+                    DisplayText = "Motorcycling is a big hobby of mine. " +
+                    "As you scroll down, you will see more of my travels, what I like to do for fun, " +
+                    "including pieces of who I am.",
                     FileName = "homebike3.jpg",
                     Name = "Fox Hoodie DET Home 3"
                 });
@@ -346,7 +347,8 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                 {
                     Id = 14,
                     DisplayText = "Crossing the Upper Peninsula of Michigan on a sport-bike is wild! " +
-                    "The middle connection is grated, leaving you with an intimidating view looking down! It's worth it just to see all Michigan offers.",
+                    "The middle connection is grated, leaving you with an intimidating view looking down! " +
+                    "It's worth it just to see all Michigan offers.",
                     FileName = "homedancininseptemba1.jpg",
                     Name = "CA Work Warehouse 1"
                 });
@@ -356,7 +358,7 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                 {
                     Id = 15,
                     DisplayText = "I decided to buy a dirt-bike and assemble it from Amazon. Seriously. " +
-                    "Would not recommend! Fun building it and ripping around the dunes. One day I'll buy a real YZ250/450f.",
+                    "Fun building it and ripping around a few hills.",
                     FileName = "homedirtbike1.jpg",
                     Name = "Desktop MI AH Bike 2"
                 });
@@ -385,7 +387,8 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                 new PortfolioImage
                 {
                     Id = 18,
-                    DisplayText = "Gaming is in my blood! As a kid, I started getting into heavy back end programming with a title named Garry's Mod. " +
+                    DisplayText = "Gaming is in my blood! As a kid, I started getting into " +
+                    "heavy back end programming with a title named Garry's Mod. " +
                     "Research TTT and look up WITD Server if curious!",
                     FileName = "homegaming1.jpg",
                     Name = "Gaming MI Halo 1"
@@ -395,9 +398,9 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                 new PortfolioImage
                 {
                     Id = 19,
-                    DisplayText = "StarCraft is my favorite game! It requires so much attention, and intense, quick multi-tasking proficiencies under stress. " +
-                    "Something I consider myself skilled at, I love StarCraft even though some consider it too difficult to learn with all the casual titles out these days. " +
-                    "Life is about mastering difficult things!",
+                    DisplayText = "StarCraft is my favorite game! It requires so much attention, and intense," +
+                    " quick multi-tasking proficiencies while under stress." +
+                    " Life is all about mastering the challenging! ",
                     FileName = "homegamingsc1.jpg",
                     Name = "Gaming MI Cuddles SC2 1"
                 });
@@ -406,8 +409,9 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                 new PortfolioImage
                 {
                     Id = 20,
-                    DisplayText = "Nothing like winding down with a beverage and some Dark Souls. " +
-                    "Most challenging title I've every played with a controller by far! Dex builds know what's up!",
+                    DisplayText = "Nothing like winding down with a beverage and some Dark Souls." +
+                    " Most challenging title I've every played with a controller by far!" +
+                    " Dex builds know what's up!",
                     FileName = "homebikegaming3.jpg",
                     Name = "Gaming MI Dark Souls 1"
                 });
@@ -416,8 +420,9 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                 new PortfolioImage
                 {
                     Id = 21,
-                    DisplayText = "I used to take the scenic routes of Detroit after work, and just enjoy the sky. " +
-                    "Nothing like the smell of the Earth's petrichor into a pleasant ride around town. Sure makes wheelies risky though!",
+                    DisplayText = "I used to take the scenic routes of Detroit after work, and just enjoy the vibes." +
+                    " Nothing like the smell of the Earth's petrichor into a pleasant ride around town." +
+                    " Sure makes wheelies risky though!",
                     FileName = "homebikejoslyn1.jpg",
                     Name = "Motorcycling MI Joslyn 1"
                 });
@@ -426,8 +431,7 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                 new PortfolioImage
                 {
                     Id = 22,
-                    DisplayText = "Motorcycling with pals, and Baby Yoda sponsored FOX hoodies? Sign me up! " +
-                    "I miss this hoodie and wish I could find a replacement. So many compliments with it!",
+                    DisplayText = "Nothing like going on a group ride with your pals. + Dibs on the baby yoda merch.",
                     FileName = "homebikeyoda1.jpg",
                     Name = "Motorcycling MI Yoda 1"
                 });
@@ -436,8 +440,9 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                 new PortfolioImage
                 {
                     Id = 23,
-                    DisplayText = "I sort of enjoyed the experiences that COVID uniquely offered me. More room for motorcycles on the road; " +
-                    "it was a great opportunity to improve my desktop, and enjoy a more balanced work-life from home at the same time. Win-win.",
+                    DisplayText = "COVID offered me less trafic, more isolation to ride after hours." +
+                    " More room for motorcycles on the road; it was a great opportunity to improve my desktop," +
+                    " and enjoy a more balanced work-life from home at the same time. Win-win.",
                     FileName = "homedesk1.jpg",
                     Name = "Desk MI Signs 1"
                 });
@@ -456,8 +461,7 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                 new PortfolioImage
                 {
                     Id = 25,
-                    DisplayText = "I really enjoy playing my guitar when I have the time to do so. " +
-                    "One day I am sure I'll have a legendary guitar collection! *starts playing dear god by a7x*.",
+                    DisplayText = "I enjoy playing guitar. *starts playing dear god by a7x*.",
                     FileName = "homeguitarpontiac1.jpg",
                     Name = "Desk MI Signs 1"
                 });
@@ -466,8 +470,7 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                 new PortfolioImage
                 {
                     Id = 26,
-                    DisplayText = "Michigan will probably always be 'home' to me; I was raised close to 9 mile " +
-                    "and the streets here have definitely had a large influence on my life.",
+                    DisplayText = "Michigan will always be 'home' to me; miss those days.",
                     FileName = "homemichigan1.jpg",
                     Name = "Home MI Sky 1"
                 });
@@ -476,8 +479,7 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                 new PortfolioImage
                 {
                     Id = 27,
-                    DisplayText = "I am a big fan of Bicycling! It's good exercise and I love to see new trails and new people who share " +
-                    "the same hobby. Feels like you're part of a club or something sometimes..",
+                    DisplayText = "Big fan of Bicycling! I love to see new trails.",
                     FileName = "homemichiganbike1.jpg",
                     Name = "Home MI Sky 1"
                 });
@@ -486,8 +488,7 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                 new PortfolioImage
                 {
                     Id = 28,
-                    DisplayText = "The beauty of Michigan is sometimes understated. You truly experience all seasons; the spring and fall feels " +
-                    "like free air conditioning outside! It's great.",
+                    DisplayText = "The beauty of Michigan is truly understated. You experience all the seasons; the spring and fall mesh in harmony.",
                     FileName = "homemichiganboulevard1.jpg",
                     Name = "Home MI Sky 1"
                 });
