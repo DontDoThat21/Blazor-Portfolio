@@ -2,62 +2,129 @@
 
 <PageTitle>Tylor Trub's Portfolio</PageTitle>
 
-<MudThemeProvider />
-<MudDialogProvider />
-<MudSnackbarProvider />
+<div class="d-flex flex-column min-vh-100 bg-secondary">
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <button class="navbar-toggler me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas" aria-controls="sidebarOffcanvas">
+                <i class="bi bi-list"></i>
+            </button>
+            <span class="navbar-brand mb-0 h1">Tylor Trub's Portfolio</span>
+            <div class="dropdown ms-auto">
+                <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-three-dots-vertical"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#">Login</a></li>
+                    <li><a class="dropdown-item" href="#">Register</a></li>
+                    <li><a class="dropdown-item" href="#">Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<MudLayout Class="bg-secondary">
-    <MudAppBar Elevation="1" Class="bg-primary">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-        <MudText Typo="Typo.h5" Class="ml-3">Tylor Trub's Portfolio</MudText>
-        <MudSpacer />
-        <MudMenu Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" Style="padding-right: 28px;">
-            <MudMenuItem>Login</MudMenuItem>
-            <MudMenuItem>Register</MudMenuItem>
-            <MudMenuItem>Log out</MudMenuItem>
-        </MudMenu>
-    </MudAppBar>
-    <MudDrawer Class="btn-color ghost-white" @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
-        <MudNavLink Href=""  Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
-        <MudNavGroup Title="Projects" Icon="@Icons.Material.Filled.Apps">
-            <MudNavLink Href="/Projects/Index">All Projects</MudNavLink>
-            <!-- todo, make this a list of repos -->
-            <MudNavLink Href="/Projects/MauiTodos">.NET Maui Todo List</MudNavLink>
-            <MudNavLink Href="/Projects/AngularEmployeeManager">Angular 16 Employee Manager</MudNavLink>
-            <MudNavLink Href="/Projects/AngularAPI">.NET FW Angular API</MudNavLink>
-            <MudNavLink Href="/Projects/WinFormsTodos">Win Forms Todos</MudNavLink>
-            <MudNavLink Href="/Projects/CppCalculator">C++ WinForms Calculator</MudNavLink>
-        </MudNavGroup>
-        <MudNavGroup Title="Motorcycles" Icon="@Icons.Material.Filled.SportsMotorsports">
-            <MudNavLink Href="/Motorcycles/Index" Icon="@Icons.Material.Filled.SportsMotorsports">Motorcycles overview</MudNavLink>
-            <MudNavLink Href="/Motorcycles/Collection" Icon="@Icons.Material.Filled.LocalMovies">Motorcycle Footage</MudNavLink>
-            <MudNavLink Href="/Motorcycles/Store" Icon="@Icons.Material.Filled.LocalConvenienceStore">Store</MudNavLink>
-        </MudNavGroup>
-        <MudNavGroup Title="Books" Icon="@Icons.Material.Filled.LibraryBooks">
-            <MudNavLink Href="/Categories/Index" Icon="@Icons.Material.Filled.LocalConvenienceStore">Book Categories</MudNavLink>
-            <MudNavLink Href="/Product/Index" Icon="@Icons.Material.Filled.LocalConvenienceStore">Products</MudNavLink>
-            <MudNavLink Href="/Companies/Index" Icon="@Icons.Material.Filled.LocalConvenienceStore">Companies</MudNavLink>
-        </MudNavGroup>
-        <MudNavLink Href="Orders/Index" Icon="@Icons.Material.Filled.ShoppingCart">Manage Orders</MudNavLink>
-        <MudNavLink Href="Carts/Index" Icon="@Icons.Material.Filled.ShoppingCart">Cart</MudNavLink>
-        <MudNavGroup Title="Games" Icon="@Icons.Material.Filled.Games">
-            <MudNavLink Href="Games/Index" Icon="@Icons.Material.Filled.Games">Games</MudNavLink>
-            <MudNavLink Href="Games/Hangman" Icon="@Icons.Material.Filled.Games">Hangman</MudNavLink>
-            <MudNavLink Href="Games/SimonSays" Icon="@Icons.Material.Filled.Games">Simon Says</MudNavLink>
-        </MudNavGroup>
-        <MudNavLink Href="Home/Privacy" Icon="@Icons.Material.Filled.PrivacyTip">Privacy</MudNavLink>
-    </MudDrawer>
-    <MudMainContent>
-        @Body
-    </MudMainContent>
-</MudLayout>
- 
+    <div class="d-flex flex-grow-1">
+        <!-- Bootstrap Offcanvas Sidebar - Show by default on larger screens -->
+        <div class="offcanvas-lg offcanvas-start btn-color ghost-white show" tabindex="-1" id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel" data-bs-backdrop="false" data-bs-scroll="true">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="sidebarOffcanvasLabel">Navigation</h5>
+                <button type="button" class="btn-close btn-close-white d-lg-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body p-0">
+                <nav class="nav nav-pills flex-column">
+                    <a class="nav-link text-white" href=""><i class="bi bi-house me-2"></i>Home</a>
+                    
+                    <!-- Projects Section -->
+                    <div class="accordion accordion-flush" id="projectsAccordion">
+                        <div class="accordion-item bg-transparent">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent text-white" type="button" data-bs-toggle="collapse" data-bs-target="#projectsCollapse" aria-expanded="false" aria-controls="projectsCollapse">
+                                    <i class="bi bi-grid3x3-gap me-2"></i>Projects
+                                </button>
+                            </h2>
+                            <div id="projectsCollapse" class="accordion-collapse collapse" data-bs-parent="#projectsAccordion">
+                                <div class="accordion-body">
+                                    <a class="nav-link text-white ps-4" href="/Projects/Index">All Projects</a>
+                                    <a class="nav-link text-white ps-4" href="/Projects/MauiTodos">.NET Maui Todo List</a>
+                                    <a class="nav-link text-white ps-4" href="/Projects/AngularEmployeeManager">Angular 16 Employee Manager</a>
+                                    <a class="nav-link text-white ps-4" href="/Projects/AngularAPI">.NET FW Angular API</a>
+                                    <a class="nav-link text-white ps-4" href="/Projects/WinFormsTodos">Win Forms Todos</a>
+                                    <a class="nav-link text-white ps-4" href="/Projects/CppCalculator">C++ WinForms Calculator</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Motorcycles Section -->
+                    <div class="accordion accordion-flush" id="motorcyclesAccordion">
+                        <div class="accordion-item bg-transparent">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent text-white" type="button" data-bs-toggle="collapse" data-bs-target="#motorcyclesCollapse" aria-expanded="false" aria-controls="motorcyclesCollapse">
+                                    <i class="bi bi-bicycle me-2"></i>Motorcycles
+                                </button>
+                            </h2>
+                            <div id="motorcyclesCollapse" class="accordion-collapse collapse" data-bs-parent="#motorcyclesAccordion">
+                                <div class="accordion-body">
+                                    <a class="nav-link text-white ps-4" href="/Motorcycles/Index"><i class="bi bi-bicycle me-2"></i>Motorcycles overview</a>
+                                    <a class="nav-link text-white ps-4" href="/Motorcycles/Collection"><i class="bi bi-camera-video me-2"></i>Motorcycle Footage</a>
+                                    <a class="nav-link text-white ps-4" href="/Motorcycles/Store"><i class="bi bi-shop me-2"></i>Store</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Books Section -->
+                    <div class="accordion accordion-flush" id="booksAccordion">
+                        <div class="accordion-item bg-transparent">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent text-white" type="button" data-bs-toggle="collapse" data-bs-target="#booksCollapse" aria-expanded="false" aria-controls="booksCollapse">
+                                    <i class="bi bi-book me-2"></i>Books
+                                </button>
+                            </h2>
+                            <div id="booksCollapse" class="accordion-collapse collapse" data-bs-parent="#booksAccordion">
+                                <div class="accordion-body">
+                                    <a class="nav-link text-white ps-4" href="/Categories/Index"><i class="bi bi-shop me-2"></i>Book Categories</a>
+                                    <a class="nav-link text-white ps-4" href="/Product/Index"><i class="bi bi-shop me-2"></i>Products</a>
+                                    <a class="nav-link text-white ps-4" href="/Companies/Index"><i class="bi bi-shop me-2"></i>Companies</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a class="nav-link text-white" href="Orders/Index"><i class="bi bi-cart me-2"></i>Manage Orders</a>
+                    <a class="nav-link text-white" href="Carts/Index"><i class="bi bi-cart me-2"></i>Cart</a>
+                    
+                    <!-- Games Section -->
+                    <div class="accordion accordion-flush" id="gamesAccordion">
+                        <div class="accordion-item bg-transparent">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-transparent text-white" type="button" data-bs-toggle="collapse" data-bs-target="#gamesCollapse" aria-expanded="false" aria-controls="gamesCollapse">
+                                    <i class="bi bi-controller me-2"></i>Games
+                                </button>
+                            </h2>
+                            <div id="gamesCollapse" class="accordion-collapse collapse" data-bs-parent="#gamesAccordion">
+                                <div class="accordion-body">
+                                    <a class="nav-link text-white ps-4" href="Games/Index"><i class="bi bi-controller me-2"></i>Games</a>
+                                    <a class="nav-link text-white ps-4" href="Games/Hangman"><i class="bi bi-controller me-2"></i>Hangman</a>
+                                    <a class="nav-link text-white ps-4" href="Games/SimonSays"><i class="bi bi-controller me-2"></i>Simon Says</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a class="nav-link text-white" href="Home/Privacy"><i class="bi bi-shield-lock me-2"></i>Privacy</a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <main class="flex-grow-1 p-3">
+            @Body
+        </main>
+    </div>
+</div>
+
 @code 
 {
-    bool _drawerOpen = true;
-
-    void DrawerToggle()
-    {
-        _drawerOpen = !_drawerOpen;
-    }
+    // No longer need drawer toggle logic since Bootstrap handles it
 }

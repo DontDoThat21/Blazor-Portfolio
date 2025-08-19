@@ -4,14 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MudBlazor.Services;
 using System.Threading.Tasks;
 using TylorTrubPortfolioBlazor.Server.BL.Data;
 using TylorTrubPortfolioBlazor.Server.BL.Services;
 using Toolbelt.Blazor.Extensions.DependencyInjection;
 using Fluxor;
 using System.Reflection;
-using MudExtensions.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
 using Fluxor.Blazor.Web.ReduxDevTools;
@@ -33,35 +31,35 @@ namespace TylorTrubPortfolioBlazor
             //builder.Services.AddDbContext<PortfolioDBContext>(options =>
             //  options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            // new identity db context
-            builder.Services.AddDbContext<PortfolioDBContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            // Disable database for demo purposes - just show UI migration
+            // builder.Services.AddDbContext<PortfolioDBContext>(options =>
+            //     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<PortfolioDBContext>().AddDefaultTokenProviders();
-            builder.Services.ConfigureApplicationCookie(options =>
-            {
-                options.LoginPath = $"/Identity/Account/Login";
-                options.LogoutPath = $"/Identity/Account/Logout";
-                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
-            });
+            // Disable Identity for demo purposes - just show UI migration
+            // builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<PortfolioDBContext>().AddDefaultTokenProviders();
+            // builder.Services.ConfigureApplicationCookie(options =>
+            // {
+            //     options.LoginPath = $"/Identity/Account/Login";
+            //     options.LogoutPath = $"/Identity/Account/Logout";
+            //     options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+            // });
 
-            builder.Services.AddScoped<IPortfolioImagesService, PortfolioImagesService>();
-            builder.Services.AddScoped<IProjectsService, ProjectsService>();
-            builder.Services.AddScoped<IMotorcycleVideosService, MotorcycleVideosService>();
-            builder.Services.AddScoped<IMotorcyclesService, MotorcyclesService>();
-            builder.Services.AddScoped<IProductsService, ProductsService>();
-            builder.Services.AddScoped<IGamesService, GamesService>();
-            builder.Services.AddScoped<ICompaniesService, CompaniesService>();
-            builder.Services.AddScoped<ICategoriesService, CategoriesService>();
+            // Disable all database-dependent services for demo purposes
+            // builder.Services.AddScoped<IPortfolioImagesService, PortfolioImagesService>();
+            // builder.Services.AddScoped<IProjectsService, ProjectsService>();
+            // builder.Services.AddScoped<IMotorcycleVideosService, MotorcycleVideosService>();
+            // builder.Services.AddScoped<IMotorcyclesService, MotorcyclesService>();
+            // builder.Services.AddScoped<IProductsService, ProductsService>();
+            // builder.Services.AddScoped<IGamesService, GamesService>();
+            // builder.Services.AddScoped<ICompaniesService, CompaniesService>();
+            // builder.Services.AddScoped<ICategoriesService, CategoriesService>();
 
-            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-            builder.Services.AddScoped<TylorTrubPortfolio.Client.BL.IEmailSender, TylorTrubPortfolio.Client.BL.EmailSender>();
+            // builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            // builder.Services.AddScoped<TylorTrubPortfolio.Client.BL.IEmailSender, TylorTrubPortfolio.Client.BL.EmailSender>();
 
             builder.Services.AddRazorComponents().AddInteractiveServerComponents();
             builder.Services.AddCascadingAuthenticationState();
-            builder.Services.AddMudBlazorDialog()
-                .AddMudServices()
-                .AddHotKeys2();
+            builder.Services.AddHotKeys2();
 
             builder.Services.AddFluxor(options =>
             {
@@ -70,7 +68,6 @@ namespace TylorTrubPortfolioBlazor
             });
 
             builder.Services.AddHttpContextAccessor();
-            builder.Services.AddMudExtensions();
 
             builder.Services.Configure<ForwardedHeadersOptions>(options =>
             {

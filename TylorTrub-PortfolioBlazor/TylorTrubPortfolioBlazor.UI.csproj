@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CodeBeam.MudBlazor.Extensions" Version="6.9.2" />
     <PackageReference Include="Fluxor.Blazor.Web" Version="6.0.0-Beta2" />
     <PackageReference Include="Fluxor.Blazor.Web.ReduxDevTools" Version="6.0.0-Beta2" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.4" />
@@ -24,7 +23,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
 	  <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
-    <PackageReference Include="MudBlazor" Version="6.19.1" />
     <PackageReference Include="Toolbelt.Blazor.HotKeys2" Version="4.1.0.1" />
   </ItemGroup>
 

@@ -13,17 +13,19 @@
             </a>
         </div>
     </div>
-    <MudSimpleTable class="table table-bordered table-striped">
-        <tr>
-            <th Style="padding: 2px">
-                Category Name
-            </th>
-            <th Style="padding: 2px">
-                Display Order
-            </th>
-            <th>
-            </th>
-        </tr>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="padding: 2px">
+                    Category Name
+                </th>
+                <th style="padding: 2px">
+                    Display Order
+                </th>
+                <th>
+                </th>
+            </tr>
+        </thead>
         <tbody>
             @foreach (var category in categories.OrderBy(u => u.DisplayOrder))
             {
@@ -47,7 +49,7 @@
                 </tr>
             }
         </tbody>
-    </MudSimpleTable>
+    </table>
 </div>
 
 @code {

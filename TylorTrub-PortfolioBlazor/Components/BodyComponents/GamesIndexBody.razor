@@ -4,18 +4,20 @@
 
     <h1>Welcome to the gaming section of my portfolio.</h1>
 
-    <MudSimpleTable class="table table-bordered table-striped table-dark">
-        <tr>
-            <th>
-                Game
-            </th>
-            <th>
-                Preview
-            </th>
-            <th>
-                Play
-            </th>
-        </tr>
+    <table class="table table-bordered table-striped table-dark">
+        <thead>
+            <tr>
+                <th>
+                    Game
+                </th>
+                <th>
+                    Preview
+                </th>
+                <th>
+                    Play
+                </th>
+            </tr>
+        </thead>
         <tbody>
             @foreach (var game in games)
             {
@@ -40,7 +42,7 @@
                 </tr>
             }
         </tbody>
-    </MudSimpleTable>
+    </table>
 </div>
 
 

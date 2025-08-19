@@ -5,7 +5,7 @@
 <div class="container">
     <h1 class="centered-nav text-info m-4 border-3 rounded-pill border-primary">Motorcycle Store - New and used Bikes</h1>
 
-    <MudSimpleTable id="tblData" class="table table-bordered table-striped rounded-2 border-2 border-light">
+    <table id="tblData" class="table table-bordered table-striped rounded-2 border-2 border-light">
         <thead class="bg-dark text-primary">
             <tr>
                 <th>Motorcycle</th>
@@ -49,11 +49,11 @@
                     <td>@motorcycle.Torque</td>
                     <td><img src="Images/Home/Motorcycle/@motorcycle.Picture" width="356px" height="200px" class="border-0 rounded" @onclick="() => RedirectToDetails(motorcycle)" /></td>
                     <td>@motorcycle.Year</td>
-                    <td><MudButton Style="background: orange;" @onclick="() => RedirectToDetails(motorcycle)">BUY</MudButton></td>
+                    <td><button class="btn" style="background: orange;" @onclick="() => RedirectToDetails(motorcycle)">BUY</button></td>
                 { index++; }
             }
         </tbody>
-    </MudSimpleTable>
+    </table>
 </div>
 
 @code {
