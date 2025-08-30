@@ -2,8 +2,20 @@
 
 @using TylorTrubPortfolioBlazor.DTO.Models
 @using TylorTrubPortfolioBlazor.Server.BL.Services
+@using System.Linq
 @inject NavigationManager NavManager
 @inject IProjectsService ProjectsService
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="input-group">
+            <span class="input-group-text">
+                <i class="fa fa-search"></i>
+            </span>
+            <input type="text" class="form-control" placeholder="Search projects..." @bind="searchText" @bind:event="oninput" />
+        </div>
+    </div>
+</div>
 
 <table class="table table-bordered table-striped">
     <tr>
@@ -21,7 +33,7 @@
         </th>
     </tr>
     <tbody>
-        @foreach (var project in projectList)
+        @foreach (var project in filteredProjects)
         {
             <tr>
                 <td>
@@ -45,6 +57,15 @@
 
 @code {
     List<Project> projectList = new List<Project>();
+    string searchText = string.Empty;
+
+    List<Project> filteredProjects => string.IsNullOrWhiteSpace(searchText)
+        ? projectList
+        : projectList.Where(p => 
+            (p.Name?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+            (p.Language?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+            (p.Url?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false)
+        ).ToList();
 
     protected override async Task OnInitializedAsync()
     {
