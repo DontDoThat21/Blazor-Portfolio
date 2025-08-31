@@ -87,27 +87,20 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Migrations
                 table: "Projects",
                 keyColumn: "Id",
                 keyValue: 7,
-                columns: new[] { "Language", "Name", "ProjectPhoto", "Url" },
-                values: new object[] { "C#.NET Core WPF", "ModernDesignPizzaStore", "net7ModernWpf", "https://github.com/DontDoThat21/ModernDesignPizzaStore" });
-
-            migrationBuilder.UpdateData(
-                table: "Projects",
-                keyColumn: "Id",
-                keyValue: 8,
                 columns: new[] { "Language", "Name", "Url" },
                 values: new object[] { "C#.NET FW", "FlickrPhotoSearcher", "https://github.com/DontDoThat21/PhotoSearcherFlickrAPI" });
 
             migrationBuilder.UpdateData(
                 table: "Projects",
                 keyColumn: "Id",
-                keyValue: 9,
+                keyValue: 8,
                 columns: new[] { "Name", "Url" },
                 values: new object[] { "FrameworkWebForms", "https://github.com/DontDoThat21/FrameworkWebForms" });
 
             migrationBuilder.UpdateData(
                 table: "Projects",
                 keyColumn: "Id",
-                keyValue: 10,
+                keyValue: 9,
                 columns: new[] { "Language", "Name", "ProjectPhoto", "Url" },
                 values: new object[] { "C++", "CppCalculator", "cppCalculator", "https://github.com/DontDoThat21/TylorTrubCppCalculator" });
         }
@@ -233,13 +226,6 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Migrations
                 keyValue: 7,
                 columns: new[] { "Language", "Name", "ProjectPhoto", "Url" },
                 values: new object[] { "C#.NET FW", "WinFormsTodos", "b", "https://github.com/DontDoThat21/NET7WinFormsWithSqliteTodos" });
-
-            migrationBuilder.UpdateData(
-                table: "Projects",
-                keyColumn: "Id",
-                keyValue: 8,
-                columns: new[] { "Language", "Name", "Url" },
-                values: new object[] { "C#.NET Core WPF", "ModernDesignPizzaStore", "https://github.com/DontDoThat21/ModernDesignPizzaStore" });
 
             migrationBuilder.UpdateData(
                 table: "Projects",

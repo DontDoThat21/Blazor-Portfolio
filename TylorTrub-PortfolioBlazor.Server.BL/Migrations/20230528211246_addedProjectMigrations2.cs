@@ -93,26 +93,19 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Migrations
                 keyColumn: "Id",
                 keyValue: 8,
                 columns: new[] { "Language", "Name", "Url" },
-                values: new object[] { "C#.NET Core WPF", "ModernDesignPizzaStore", "https://github.com/DontDoThat21/ModernDesignPizzaStore" });
+                values: new object[] { "C#.NET FW", "FlickrPhotoSearcher", "https://github.com/DontDoThat21/PhotoSearcherFlickrAPI" });
 
             migrationBuilder.UpdateData(
                 table: "Projects",
                 keyColumn: "Id",
                 keyValue: 9,
                 columns: new[] { "Language", "Name", "Url" },
-                values: new object[] { "C#.NET FW", "FlickrPhotoSearcher", "https://github.com/DontDoThat21/PhotoSearcherFlickrAPI" });
-
-            migrationBuilder.UpdateData(
-                table: "Projects",
-                keyColumn: "Id",
-                keyValue: 10,
-                columns: new[] { "Language", "Name", "Url" },
                 values: new object[] { "C#.NET FW", "FrameworkWebForms", "https://github.com/DontDoThat21/FrameworkWebForms" });
 
             migrationBuilder.InsertData(
                 table: "Projects",
                 columns: new[] { "Id", "Language", "Name", "ProjectPhoto", "Url" },
-                values: new object[] { 11, "C++", "CppCalculator", "b", "https://github.com/DontDoThat21/TylorTrubCppCalculator" });
+                values: new object[] { 10, "C++", "CppCalculator", "b", "https://github.com/DontDoThat21/TylorTrubCppCalculator" });
         }
 
         /// <inheritdoc />
@@ -161,13 +154,6 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Migrations
                 keyValue: 6,
                 columns: new[] { "Name", "Url" },
                 values: new object[] { "WinFormsTodos", "https://github.com/DontDoThat21/NET7WinFormsWithSqliteTodos" });
-
-            migrationBuilder.UpdateData(
-                table: "Projects",
-                keyColumn: "Id",
-                keyValue: 7,
-                columns: new[] { "Name", "Url" },
-                values: new object[] { "ModernDesignPizzaStore", "https://github.com/DontDoThat21/ModernDesignPizzaStore" });
 
             migrationBuilder.UpdateData(
                 table: "Projects",

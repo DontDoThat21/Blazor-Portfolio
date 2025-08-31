@@ -1068,14 +1068,6 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Migrations
                         },
                         new
                         {
-                            Id = 8,
-                            Language = "C#.NET Core WPF",
-                            Name = "ModernDesignPizzaStore",
-                            ProjectPhoto = "b",
-                            Url = "https://github.com/DontDoThat21/ModernDesignPizzaStore"
-                        },
-                        new
-                        {
                             Id = 9,
                             Language = "C#.NET FW",
                             Name = "FlickrPhotoSearcher",

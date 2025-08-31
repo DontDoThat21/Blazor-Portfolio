@@ -566,20 +566,10 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                 new Project
                 {
                     Id = 7,
-                    Name = "ModernDesignPizzaStore",
-                    Language = "C#.NET Core WPF",
-                    Url = "https://github.com/DontDoThat21/ModernDesignPizzaStore",
-                    ProjectPhoto = "net7ModernWpf.png"
-                });
-
-            modelBuilder.Entity<Project>().HasData(
-                new Project
-                {
-                    Id = 8,
-                    Name = "FlickrPhotoSearcher",
+                    Name = "FlickrPhotoSearcher", 
                     Language = "C#.NET FW",
                     Url = "https://github.com/DontDoThat21/PhotoSearcherFlickrAPI",
-                    ProjectPhoto = "b.png"
+                    ProjectPhoto = "flickrImageSearcher.png"
                 });
 
             modelBuilder.Entity<Project>().HasData(
@@ -612,6 +602,515 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                     ProjectPhoto = "b.png"
                 });
 
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 57,
+                    Name = "AIChess",
+                    Language = "Python, JavaScript",
+                    Url = "https://github.com/DontDoThat21/AIChess.git",
+                    ProjectPhoto = "aiChess.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 58,
+                    Name = "AlgorithmPractice",
+                    Language = "C++, Python, Java",
+                    Url = "https://github.com/DontDoThat21/AlgorithmPractice.git",
+                    ProjectPhoto = "algorithmPractice.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 59,
+                    Name = "Angular16EmployeeDepartment",
+                    Language = "TypeScript, HTML, CSS",
+                    Url = "https://github.com/DontDoThat21/Angular16EmployeeDepartment.git",
+                    ProjectPhoto = "angular16EmployeeDepartment.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 60,
+                    Name = "Angular18Calculator",
+                    Language = "TypeScript, HTML, CSS",
+                    Url = "https://github.com/DontDoThat21/Angular18Calculator.git",
+                    ProjectPhoto = "angular18Calculator.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 61,
+                    Name = "ArduinoMatrix",
+                    Language = "C++, Arduino",
+                    Url = "https://github.com/DontDoThat21/ArduinoMatrix.git",
+                    ProjectPhoto = "arduinoMatrix.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 62,
+                    Name = "ArticleCleaner",
+                    Language = "Python, JavaScript",
+                    Url = "https://github.com/DontDoThat21/ArticleCleaner.git",
+                    ProjectPhoto = "articleCleaner.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 63,
+                    Name = "ATBGE-GUI",
+                    Language = "C#, WinForms",
+                    Url = "https://github.com/DontDoThat21/ATBGE-GUI.git",
+                    ProjectPhoto = "atbgeGui.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 64,
+                    Name = "BankManagementSystem",
+                    Language = "Java, SQL",
+                    Url = "https://github.com/DontDoThat21/BankManagementSystem.git",
+                    ProjectPhoto = "bankManagementSystem.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 65,
+                    Name = "Blazor-Portfolio",
+                    Language = "C#, Blazor, HTML, CSS",
+                    Url = "https://github.com/DontDoThat21/Blazor-Portfolio.git",
+                    ProjectPhoto = "blazorPortfolio.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 66,
+                    Name = "BookOfGrudges",
+                    Language = "C#.NET",
+                    Url = "https://github.com/DontDoThat21/BookOfGrudges.git",
+                    ProjectPhoto = "bookOfGrudges.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 67,
+                    Name = "Calculator.WebAPI.NET-Core",
+                    Language = "C#.NET Core",
+                    Url = "https://github.com/DontDoThat21/Calculator.WebAPI.NET-Core.git",
+                    ProjectPhoto = "calculatorWebApiNetCore.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 68,
+                    Name = "Capstone",
+                    Language = "C#, SQL",
+                    Url = "https://github.com/DontDoThat21/Capstone.git",
+                    ProjectPhoto = "capstone.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 69,
+                    Name = "ChromeBorderlessVideoExtension",
+                    Language = "JavaScript, HTML, CSS",
+                    Url = "https://github.com/DontDoThat21/ChromeBorderlessVideoExtension.git",
+                    ProjectPhoto = "chromeBorderlessVideo.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 70,
+                    Name = "ChromeVolumeController",
+                    Language = "JavaScript, HTML, CSS",
+                    Url = "https://github.com/DontDoThat21/ChromeVolumeController.git",
+                    ProjectPhoto = "chromeVolumeController.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 71,
+                    Name = "chromiumBorderlessVideos",
+                    Language = "JavaScript, HTML, CSS",
+                    Url = "https://github.com/DontDoThat21/chromiumBorderlessVideos.git",
+                    ProjectPhoto = "chromiumBorderlessVideos.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 72,
+                    Name = "chromiumSearchEngineRedirect",
+                    Language = "JavaScript, HTML",
+                    Url = "https://github.com/DontDoThat21/chromiumSearchEngineRedirect.git",
+                    ProjectPhoto = "chromiumSearchEngineRedirect.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 73,
+                    Name = "ClassicWindowsDesktop",
+                    Language = "C#, WinForms",
+                    Url = "https://github.com/DontDoThat21/ClassicWindowsDesktop.git",
+                    ProjectPhoto = "classicWindowsDesktop.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 74,
+                    Name = "ConsoleInsiderListener",
+                    Language = "C#.NET",
+                    Url = "https://github.com/DontDoThat21/ConsoleInsiderListener.git",
+                    ProjectPhoto = "consoleInsiderListener.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 75,
+                    Name = "CppCalculator",
+                    Language = "C++",
+                    Url = "https://github.com/DontDoThat21/CppCalculator.git",
+                    ProjectPhoto = "cppCalculator.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 76,
+                    Name = "CS2RecoilHelper",
+                    Language = "C++, C#",
+                    Url = "https://github.com/DontDoThat21/CS2RecoilHelper.git",
+                    ProjectPhoto = "cs2RecoilHelper.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 77,
+                    Name = "Director",
+                    Language = "C#.NET",
+                    Url = "https://github.com/DontDoThat21/Director.git",
+                    ProjectPhoto = "director.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 78,
+                    Name = "DontsLLM",
+                    Language = "Python, TensorFlow",
+                    Url = "https://github.com/DontDoThat21/DontsLLM.git",
+                    ProjectPhoto = "dontsLLM.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 79,
+                    Name = "DreamKeeper",
+                    Language = "C#, SQL",
+                    Url = "https://github.com/DontDoThat21/DreamKeeper.git",
+                    ProjectPhoto = "dreamKeeper.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 80,
+                    Name = "FlickrImageSearcher",
+                    Language = "C#, API",
+                    Url = "https://github.com/DontDoThat21/FlickrImageSearcher.git",
+                    ProjectPhoto = "flickrImageSearcher.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 81,
+                    Name = "FrameworkWebForms",
+                    Language = "C#.NET Framework, ASP.NET",
+                    Url = "https://github.com/DontDoThat21/FrameworkWebForms.git",
+                    ProjectPhoto = "frameworkWebForms.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 82,
+                    Name = "GithubIssueManager",
+                    Language = "C#, GitHub API",
+                    Url = "https://github.com/DontDoThat21/GithubIssueManager.git",
+                    ProjectPhoto = "githubIssueManager.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 83,
+                    Name = "HighlightsVault",
+                    Language = "JavaScript, HTML, CSS",
+                    Url = "https://github.com/DontDoThat21/HighlightsVault.git",
+                    ProjectPhoto = "highlightsVault.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 84,
+                    Name = "History",
+                    Language = "JavaScript, HTML",
+                    Url = "https://github.com/DontDoThat21/History.git",
+                    ProjectPhoto = "history.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 85,
+                    Name = "HomePage",
+                    Language = "HTML, CSS, JavaScript",
+                    Url = "https://github.com/DontDoThat21/HomePage.git",
+                    ProjectPhoto = "homePage.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 86,
+                    Name = "JapaneseLearner",
+                    Language = "JavaScript, HTML, CSS",
+                    Url = "https://github.com/DontDoThat21/JapaneseLearner.git",
+                    ProjectPhoto = "japaneseLearner.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 87,
+                    Name = "JavaSpringMVC-TodoApp",
+                    Language = "Java, Spring MVC",
+                    Url = "https://github.com/DontDoThat21/JavaSpringMVC-TodoApp.git",
+                    ProjectPhoto = "javaSpringMvcTodoApp.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 88,
+                    Name = "KernAccessorHelper",
+                    Language = "C++, Windows Kernel",
+                    Url = "https://github.com/DontDoThat21/KernAccessorHelper.git",
+                    ProjectPhoto = "kernAccessorHelper.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 89,
+                    Name = "Mcdonalds",
+                    Language = "JavaScript, HTML, CSS",
+                    Url = "https://github.com/DontDoThat21/Mcdonalds.git",
+                    ProjectPhoto = "mcdonalds.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 90,
+                    Name = "Muffle",
+                    Language = "C#, Audio Processing",
+                    Url = "https://github.com/DontDoThat21/Muffle.git",
+                    ProjectPhoto = "muffle.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 91,
+                    Name = "MySQL-Database-with-GUI",
+                    Language = "Java, MySQL, Swing",
+                    Url = "https://github.com/DontDoThat21/MySQL-Database-with-GUI.git",
+                    ProjectPhoto = "mysqlDatabaseWithGui.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 92,
+                    Name = "NETMauiWithSQLiteTodos",
+                    Language = "C#, .NET MAUI, SQLite",
+                    Url = "https://github.com/DontDoThat21/NETMauiWithSQLiteTodos.git",
+                    ProjectPhoto = "netMauiWithSqliteTodos.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 93,
+                    Name = "NETWinFormsWithSQLiteTodos",
+                    Language = "C#, WinForms, SQLite",
+                    Url = "https://github.com/DontDoThat21/NETWinFormsWithSQLiteTodos.git",
+                    ProjectPhoto = "netWinFormsWithSqliteTodos.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 94,
+                    Name = "OBD.NET",
+                    Language = "C#.NET, OBD-II",
+                    Url = "https://github.com/DontDoThat21/OBD.NET.git",
+                    ProjectPhoto = "obdNet.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 95,
+                    Name = "OpenAITranscribing",
+                    Language = "Python, OpenAI API",
+                    Url = "https://github.com/DontDoThat21/OpenAITranscribing.git",
+                    ProjectPhoto = "openAiTranscribing.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 96,
+                    Name = "PolarnOranges",
+                    Language = "C#.NET",
+                    Url = "https://github.com/DontDoThat21/PolarnOranges.git",
+                    ProjectPhoto = "polarnOranges.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 97,
+                    Name = "PowerKeys",
+                    Language = "C#, Windows API",
+                    Url = "https://github.com/DontDoThat21/PowerKeys.git",
+                    ProjectPhoto = "powerKeys.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 98,
+                    Name = "PythonMaze",
+                    Language = "Python",
+                    Url = "https://github.com/DontDoThat21/PythonMaze.git",
+                    ProjectPhoto = "pythonMaze.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 99,
+                    Name = "QuickKeys",
+                    Language = "C#, Windows API",
+                    Url = "https://github.com/DontDoThat21/QuickKeys.git",
+                    ProjectPhoto = "quickKeys.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 100,
+                    Name = "Redactor",
+                    Language = "C#, Text Processing",
+                    Url = "https://github.com/DontDoThat21/Redactor.git",
+                    ProjectPhoto = "redactor.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 101,
+                    Name = "Redliner",
+                    Language = "C#.NET",
+                    Url = "https://github.com/DontDoThat21/Redliner.git",
+                    ProjectPhoto = "redliner.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 102,
+                    Name = "RemoteLink",
+                    Language = "C#, Networking",
+                    Url = "https://github.com/DontDoThat21/RemoteLink.git",
+                    ProjectPhoto = "remoteLink.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 103,
+                    Name = "RestaurantJavaApplicationSQLite",
+                    Language = "Java, SQLite",
+                    Url = "https://github.com/DontDoThat21/RestaurantJavaApplicationSQLite.git",
+                    ProjectPhoto = "restaurantJavaAppSqlite.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 104,
+                    Name = "VB-TicTacToeGame",
+                    Language = "Visual Basic .NET",
+                    Url = "https://github.com/DontDoThat21/VB-TicTacToeGame.git",
+                    ProjectPhoto = "vbTicTacToeGame.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 105,
+                    Name = "WinFormsSquirrel",
+                    Language = "C#, WinForms, Squirrel",
+                    Url = "https://github.com/DontDoThat21/WinFormsSquirrel.git",
+                    ProjectPhoto = "winFormsSquirrel.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 106,
+                    Name = "WebAPI.NET-Core",
+                    Language = "C#.NET Core, Web API",
+                    Url = "https://github.com/DontDoThat21/WebAPI.NET-Core.git",
+                    ProjectPhoto = "webApiNetCore.png"
+                });
+
+            modelBuilder.Entity<Project>().HasData(
+                new Project
+                {
+                    Id = 107,
+                    Name = "WebAPI.NET-FW",
+                    Language = "C#.NET Framework, Web API",
+                    Url = "https://github.com/DontDoThat21/WebAPI.NET-FW.git",
+                    ProjectPhoto = "webApiNetFw.png"
+                });
         }
         
     }

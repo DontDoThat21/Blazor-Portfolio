@@ -60,10 +60,9 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Migrations
                     { 4, "HotSBot", "b", "https://github.com/DontDoThat21/HotSBot" },
                     { 5, "JavaSystemLocker", "b", "https://github.com/DontDoThat21/BenignSystemLockMaven" },
                     { 6, "WinFormsTodos", "b", "https://github.com/DontDoThat21/NET7WinFormsWithSqliteTodos" },
-                    { 7, "ModernDesignPizzaStore", "b", "https://github.com/DontDoThat21/ModernDesignPizzaStore" },
-                    { 8, "FlickrPhotoSearcher", "b", "https://github.com/DontDoThat21/PhotoSearcherFlickrAPI" },
-                    { 9, "FrameworkWebForms", "b", "https://github.com/DontDoThat21/FrameworkWebForms" },
-                    { 10, "CppCalculator", "b", "https://github.com/DontDoThat21/TylorTrubCppCalculator" }
+                    { 7, "FlickrPhotoSearcher", "b", "https://github.com/DontDoThat21/PhotoSearcherFlickrAPI" },
+                    { 8, "FrameworkWebForms", "b", "https://github.com/DontDoThat21/FrameworkWebForms" },
+                    { 9, "CppCalculator", "b", "https://github.com/DontDoThat21/TylorTrubCppCalculator" }
                 });
         }
 

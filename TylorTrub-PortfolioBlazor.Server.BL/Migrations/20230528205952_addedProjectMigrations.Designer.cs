@@ -923,13 +923,6 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Migrations
                         },
                         new
                         {
-                            Id = 7,
-                            Name = "ModernDesignPizzaStore",
-                            ProjectPhoto = "b",
-                            Url = "https://github.com/DontDoThat21/ModernDesignPizzaStore"
-                        },
-                        new
-                        {
                             Id = 8,
                             Name = "FlickrPhotoSearcher",
                             ProjectPhoto = "b",
