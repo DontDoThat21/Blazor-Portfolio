@@ -6,62 +6,98 @@
 @inject NavigationManager NavManager
 @inject IProjectsService ProjectsService
 
-<div class="row mb-3">
-    <div class="col-12">
-        <div class="input-group">
-            <span class="input-group-text">
-                <i class="fa fa-search"></i>
-            </span>
-            <input type="text" class="form-control" placeholder="Search projects..." @bind="searchText" @bind:event="oninput" />
+<div class="container py-3 projects-page">
+    <div class="row align-items-center mb-3 g-2">
+        <div class="col-12 col-md-6">
+            <h2 class="mb-0 text-primary fw-semibold">Projects</h2>
+            <small class="text-muted">Explore projects by language and tech</small>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="input-group shadow-sm">
+                <span class="input-group-text bg-white border-end-0">
+                    <i class="bi bi-search text-secondary"></i>
+                </span>
+                <input type="text" class="form-control border-start-0" placeholder="Search projects by name, language, or URL..." @bind="searchText" @bind:event="oninput" />
+            </div>
         </div>
     </div>
+
+    @if (isLoading)
+    {
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+            @for (int i = 0; i < 6; i++)
+            {
+                <div class="col">
+                    <div class="card project-card placeholder-wave">
+                        <div class="ratio ratio-16x9">
+                            <div class="placeholder w-100 h-100"></div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title placeholder-glow"><span class="placeholder col-8"></span></h5>
+                            <p class="card-text placeholder-glow"><span class="placeholder col-6"></span></p>
+                            <div class="d-flex gap-2 mt-2">
+                                <span class="btn btn-sm btn-outline-primary disabled placeholder col-5"></span>
+                                <span class="btn btn-sm btn-outline-secondary disabled placeholder col-5"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else if (filteredProjects is null || filteredProjects.Count == 0)
+    {
+        <div class="text-center text-muted py-5">
+            <i class="bi bi-grid-3x3-gap display-5 d-block mb-3"></i>
+            <div class="fs-5">No projects found</div>
+            <div class="small">Try a different search or clear the filter.</div>
+        </div>
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+            @foreach (var project in filteredProjects)
+            {
+                var detailsPath = $"/Projects/{(project?.Name ?? string.Empty).Replace(" ", string.Empty)}";
+                <div class="col">
+                    <div class="card project-card h-100 shadow-sm">
+                        <a class="stretched-link" href="@detailsPath" aria-label="Open @project?.Name"></a>
+                        <div class="ratio ratio-16x9">
+                            <img src="/Images/project/@project?.ProjectPhoto" class="card-img-top project-img" alt="@project?.Name image" loading="lazy" />
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title mb-0 text-truncate" title="@project?.Name">@project?.Name</h5>
+                                @if (!string.IsNullOrWhiteSpace(project?.Language))
+                                {
+                                    <span class="badge bg-gradient-blue ms-2" title="Language">@project!.Language</span>
+                                }
+                            </div>
+                            @if (!string.IsNullOrWhiteSpace(project?.Url))
+                            {
+                                <div class="mt-auto">
+                                    <a class="btn btn-sm btn-outline-secondary" href="@project!.Url" target="_blank" rel="noopener noreferrer" @onclick:stopPropagation="true">
+                                        <i class="bi bi-box-arrow-up-right"></i>
+                                        View on GitHub
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
 </div>
 
-<table class="table table-bordered table-striped">
-    <tr>
-        <th>
-            Project Name
-        </th>
-        <th>
-            Language
-        </th>
-        <th>
-            Project details
-        </th>
-        <th>
-            GitHub URL
-        </th>
-    </tr>
-    <tbody>
-        @foreach (var project in filteredProjects)
-        {
-            <tr>
-                <td>
-                    <a class="btn btn-primary" href="/Projects/@project.Name.ToString().Replace(" ", "")">@project.Name</a>
-                </td>
-                <td>
-                    @project.Language
-                </td>
-                <td>
-                    <a class="btn btn-primary" href="/Projects/@project.Name.ToString().Replace(" ", "")"><img src="/Images/project/@project.ProjectPhoto" width="400px" height="300px" /></a>
-                </td>
-                <td>
-                    <a>
-                        <a href="@project.Url">@project.Url</a>
-                    </a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-
 @code {
-    List<Project> projectList = new List<Project>();
+    List<Project> projectList = new();
     string searchText = string.Empty;
+    bool isLoading = true;
 
     List<Project> filteredProjects => string.IsNullOrWhiteSpace(searchText)
         ? projectList
-        : projectList.Where(p => 
+        : projectList.Where(p =>
             (p.Name?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
             (p.Language?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
             (p.Url?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false)
@@ -69,6 +105,13 @@
 
     protected override async Task OnInitializedAsync()
     {
-        projectList = await ProjectsService.FetchProjectsAsync();
+        try
+        {
+            projectList = await ProjectsService.FetchProjectsAsync();
+        }
+        finally
+        {
+            isLoading = false;
+        }
     }
 }
