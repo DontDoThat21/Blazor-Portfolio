@@ -16,5 +16,7 @@
 }
 .projects-page .input-group .form-control:focus {
   box-shadow: none;
+  outline: none;
+  border-color: var(--bs-primary);
 }
 .projects-page .placeholder { background-color: #e9ecef; }
