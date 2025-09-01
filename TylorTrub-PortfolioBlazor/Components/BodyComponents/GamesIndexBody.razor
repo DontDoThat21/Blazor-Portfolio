@@ -4,7 +4,7 @@
 
     <h1>Welcome to the gaming section of my portfolio.</h1>
 
-    <MudSimpleTable class="table table-bordered table-striped table-dark">
+    <table class="table table-bordered table-striped table-dark">
         <tr>
             <th>
                 Game
@@ -31,16 +31,14 @@
                         </a>
                     </td>
                     <td>
-                        <a> @* was: asp-controller="Games" asp-action="@game.GameName.Replace(" ", "")" *@
-                            <a href="/Games/@game.GameName.Replace(" ", "")">
-                                +
-                            </a>
+                        <a href="/Games/@game.GameName.Replace(" ", "")">
+                            +
                         </a>
                     </td>
                 </tr>
             }
         </tbody>
-    </MudSimpleTable>
+    </table>
 </div>
 
 

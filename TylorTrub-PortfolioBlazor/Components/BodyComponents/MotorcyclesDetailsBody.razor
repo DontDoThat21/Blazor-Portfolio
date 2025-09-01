@@ -12,11 +12,11 @@ Note: This page is still under development. Test second.
 }
 else
 {
-    <MudCard>
-        <MudCardContent>
+    <div class="card">
+        <div class="card-body">
             <h1>Motorcycle details:</h1>
-            <MudForm>
-                <MudSimpleTable>
+            <form>
+                <table class="table">
                     <tr>
                         <th>
                             @motorcycle.MotorcycleName
@@ -31,7 +31,7 @@ else
                             Engine: @motorcycle.EngineStyle
                         </th>
                     </tr>
-                </MudSimpleTable>
+                </table>
 
                 <h2>Motorcycle Selected - You clicked @("20" + motorcycle.Year.ToString()) @motorcycle.MotorcycleName</h2>
                 <img src="Images/Home/Motorcycle/@motorcycle.Picture" width="356px" height="200px" class="border-0 rounded" />
@@ -47,11 +47,11 @@ else
                 <p>Horsepower: @motorcycle.Hp</p>
                 <p>Brakes: @motorcycle.Brakes</p>
 
-                <MudButton Style="color: blue; background: orange;" type="submit">Buy</MudButton>
+                <button style="color: blue; background: orange;" type="submit" class="btn">Buy</button>
 
-            </MudForm>
-        </MudCardContent>
-    </MudCard>
+            </form>
+        </div>
+    </div>
     
 }
 
