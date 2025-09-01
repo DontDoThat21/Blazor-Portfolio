@@ -2,55 +2,83 @@
 
 <PageTitle>Tylor T's Portfolio</PageTitle>
 
-<MudThemeProvider />
-<MudDialogProvider />
-<MudSnackbarProvider />
+<div class="d-flex flex-column min-vh-100 bg-secondary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <button class="btn btn-outline-light me-2" type="button" @onclick="DrawerToggle" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="/">Tylor T's Portfolio</a>
 
-<MudLayout Class="bg-secondary">
-    <MudAppBar Elevation="1" Class="bg-primary">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-        <MudText Typo="Typo.h5" Class="ml-3">Tylor T's Portfolio</MudText>
-        <MudSpacer />
-        <MudMenu Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" Style="padding-right: 28px;">
-            <MudMenuItem>Login</MudMenuItem>
-            <MudMenuItem>Register</MudMenuItem>
-            <MudMenuItem>Log out</MudMenuItem>
-        </MudMenu>
-    </MudAppBar>
-    <MudDrawer Class="btn-color ghost-white" @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
-        <MudNavLink Href=""  Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
-        <MudNavGroup Title="Projects" Icon="@Icons.Material.Filled.Apps">
-            <MudNavLink Href="/Projects/Index">All Projects</MudNavLink>
-            <!-- todo, make this a list of repos -->
-            <MudNavLink Href="/Projects/MauiTodos">.NET Maui Todo List</MudNavLink>
-            <MudNavLink Href="/Projects/AngularEmployeeManager">Angular 16 Employee Manager</MudNavLink>
-            <MudNavLink Href="/Projects/AngularAPI">.NET FW Angular API</MudNavLink>
-            <MudNavLink Href="/Projects/WinFormsTodos">Win Forms Todos</MudNavLink>
-            <MudNavLink Href="/Projects/CppCalculator">C++ WinForms Calculator</MudNavLink>
-        </MudNavGroup>
-        <MudNavGroup Title="Motorcycles" Icon="@Icons.Material.Filled.SportsMotorsports">
-            <MudNavLink Href="/Motorcycles/Index" Icon="@Icons.Material.Filled.SportsMotorsports">Motorcycles overview</MudNavLink>
-            <MudNavLink Href="/Motorcycles/Collection" Icon="@Icons.Material.Filled.LocalMovies">Motorcycle Footage</MudNavLink>
-            <MudNavLink Href="/Motorcycles/Store" Icon="@Icons.Material.Filled.LocalConvenienceStore">Store</MudNavLink>
-        </MudNavGroup>
-        <MudNavGroup Title="Books" Icon="@Icons.Material.Filled.LibraryBooks">
-            <MudNavLink Href="/Categories/Index" Icon="@Icons.Material.Filled.LocalConvenienceStore">Book Categories</MudNavLink>
-            <MudNavLink Href="/Product/Index" Icon="@Icons.Material.Filled.LocalConvenienceStore">Products</MudNavLink>
-            <MudNavLink Href="/Companies/Index" Icon="@Icons.Material.Filled.LocalConvenienceStore">Companies</MudNavLink>
-        </MudNavGroup>
-        <MudNavLink Href="Orders/Index" Icon="@Icons.Material.Filled.ShoppingCart">Manage Orders</MudNavLink>
-        <MudNavLink Href="Carts/Index" Icon="@Icons.Material.Filled.ShoppingCart">Cart</MudNavLink>
-        <MudNavGroup Title="Games" Icon="@Icons.Material.Filled.Games">
-            <MudNavLink Href="Games/Index" Icon="@Icons.Material.Filled.Games">Games</MudNavLink>
-            <MudNavLink Href="Games/Hangman" Icon="@Icons.Material.Filled.Games">Hangman</MudNavLink>
-            <MudNavLink Href="Games/SimonSays" Icon="@Icons.Material.Filled.Games">Simon Says</MudNavLink>
-        </MudNavGroup>
-        <MudNavLink Href="Home/Privacy" Icon="@Icons.Material.Filled.PrivacyTip">Privacy</MudNavLink>
-    </MudDrawer>
-    <MudMainContent>
-        @Body
-    </MudMainContent>
-</MudLayout>
+            <div class="ms-auto dropdown me-3">
+                <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Menu
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="/Login">Login</a></li>
+                    <li><a class="dropdown-item" href="/Register">Register</a></li>
+                    <li><a class="dropdown-item" href="/Logout">Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="d-flex flex-grow-1">
+        <aside class="bg-light border-end" style="width: 260px;" hidden="@(!_drawerOpen)">
+            <nav class="nav flex-column p-2">
+                <NavLink class="nav-link" href="/">Home</NavLink>
+
+                <div class="mt-2">
+                    <small class="text-uppercase text-muted px-2">Projects</small>
+                    <div class="nav flex-column ms-2">
+                        <NavLink class="nav-link" href="/Projects/Index">All Projects</NavLink>
+                        <NavLink class="nav-link" href="/Projects/MauiTodos">.NET Maui Todo List</NavLink>
+                        <NavLink class="nav-link" href="/Projects/AngularEmployeeManager">Angular 16 Employee Manager</NavLink>
+                        <NavLink class="nav-link" href="/Projects/AngularAPI">.NET FW Angular API</NavLink>
+                        <NavLink class="nav-link" href="/Projects/WinFormsTodos">Win Forms Todos</NavLink>
+                        <NavLink class="nav-link" href="/Projects/CppCalculator">C++ WinForms Calculator</NavLink>
+                    </div>
+                </div>
+
+                <div class="mt-2">
+                    <small class="text-uppercase text-muted px-2">Motorcycles</small>
+                    <div class="nav flex-column ms-2">
+                        <NavLink class="nav-link" href="/Motorcycles/Index">Motorcycles overview</NavLink>
+                        <NavLink class="nav-link" href="/Motorcycles/Collection">Motorcycle Footage</NavLink>
+                        <NavLink class="nav-link" href="/Motorcycles/Store">Store</NavLink>
+                    </div>
+                </div>
+
+                <div class="mt-2">
+                    <small class="text-uppercase text-muted px-2">Books</small>
+                    <div class="nav flex-column ms-2">
+                        <NavLink class="nav-link" href="/Categories/Index">Book Categories</NavLink>
+                        <NavLink class="nav-link" href="/Product/Index">Products</NavLink>
+                        <NavLink class="nav-link" href="/Companies/Index">Companies</NavLink>
+                    </div>
+                </div>
+
+                <NavLink class="nav-link mt-2" href="/Orders/Index">Manage Orders</NavLink>
+                <NavLink class="nav-link" href="/Carts/Index">Cart</NavLink>
+
+                <div class="mt-2">
+                    <small class="text-uppercase text-muted px-2">Games</small>
+                    <div class="nav flex-column ms-2">
+                        <NavLink class="nav-link" href="/Games/Index">Games</NavLink>
+                        <NavLink class="nav-link" href="/Games/Hangman">Hangman</NavLink>
+                        <NavLink class="nav-link" href="/Games/SimonSays">Simon Says</NavLink>
+                    </div>
+                </div>
+
+                <NavLink class="nav-link mt-2" href="/Home/Privacy">Privacy</NavLink>
+            </nav>
+        </aside>
+
+        <main class="flex-grow-1 p-3">
+            @Body
+        </main>
+    </div>
+</div>
  
 @code 
 {
