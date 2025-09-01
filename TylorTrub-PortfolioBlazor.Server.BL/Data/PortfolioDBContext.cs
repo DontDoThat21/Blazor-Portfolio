@@ -492,14 +492,13 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                     FileName = "homemichiganboulevard1.jpg",
                     Name = "Home MI Sky 1"
                 });
-
+             
 
             modelBuilder.Entity<Game>().HasData(
                 new Game { Id = 1, GameName = "Hangman", Preview = "hangman.png" });
 
             modelBuilder.Entity<Game>().HasData(
                 new Game { Id = 2, GameName = "Simon Says", Preview = "simonsays.png" });
-
 
 
             modelBuilder.Entity<Project>().HasData(
