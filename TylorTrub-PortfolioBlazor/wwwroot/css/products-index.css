@@ -1,0 +1,270 @@
+/* Products Index Page Styles */
+
+.text-highlight {
+    background: linear-gradient(120deg, #a8e6cf 0%, #dcedc8 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.2em;
+    background-position: 0 88%;
+    transition: background-size 0.25s ease-in;
+}
+
+.text-highlight:hover {
+    background-size: 100% 0.8em;
+}
+
+.modern-table tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.05);
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
+}
+
+.action-buttons .btn {
+    transition: all 0.2s ease;
+}
+
+.action-buttons .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.product-table-card {
+    transition: box-shadow 0.3s ease;
+    border-radius: 15px;
+}
+
+.input-group .form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.input-group-text {
+    border-color: #dee2e6;
+}
+
+.author-badge, .category-badge {
+    font-weight: 500;
+}
+
+.product-icon {
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.isbn-code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    border: 1px solid #e9ecef;
+}
+
+.price-main {
+    font-size: 1.1rem;
+}
+
+/* Loading skeleton animations */
+.placeholder {
+    background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+    border-radius: 5px;
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: calc(200% + 100px) 0;
+    }
+}
+
+.placeholder-wave {
+    mask-image: linear-gradient(130deg, #000 40%, rgba(0,0,0, 0.5) 50%, #000 60%);
+    mask-size: 200% 100%;
+    animation: placeholder-wave 2s linear infinite;
+}
+
+@keyframes placeholder-wave {
+    100% {
+        mask-position: -200% 0%;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .action-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .action-buttons .btn {
+        border-radius: 0.375rem !important;
+        margin-bottom: 2px;
+    }
+    
+    .product-icon {
+        min-width: 35px;
+        height: 35px;
+    }
+    
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+    
+    .container-fluid {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .text-highlight {
+        font-size: 0.9rem;
+    }
+    
+    .isbn-code {
+        font-size: 0.75rem;
+    }
+    
+    .action-buttons .btn {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.4rem;
+    }
+}
+
+/* Enhanced hover effects */
+.table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.table tbody tr:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Badge improvements */
+.badge {
+    border-radius: 6px;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+}
+
+/* Button group enhancements */
+.btn-group .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 0.25rem;
+}
+
+.btn-group .btn-sm:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.btn-group .btn-sm:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn-group .btn-sm:not(:first-child):not(:last-child) {
+    border-radius: 0;
+}
+
+/* Loading and empty states */
+.empty-state {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px;
+    padding: 3rem 2rem;
+    margin: 1rem;
+}
+
+/* Search input enhancements */
+.input-group .form-control {
+    transition: all 0.2s ease;
+}
+
+.input-group .form-control:focus + .input-group-text,
+.input-group .input-group-text + .form-control:focus {
+    border-color: #0d6efd;
+}
+
+.input-group .form-control:disabled,
+.form-select:disabled {
+    background-color: #f8f9fa;
+    opacity: 0.6;
+}
+
+/* Card shadow improvements */
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+.product-table-card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Spinner improvements */
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Price enhancements */
+.price-main {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Success text for discount */
+.text-success {
+    color: #198754 !important;
+}
+
+/* Button link styling */
+.btn-link {
+    border: none;
+    background: none;
+    color: #0d6efd;
+    text-decoration: underline;
+}
+
+.btn-link:hover {
+    color: #0a58ca;
+    text-decoration: underline;
+}
+
+/* Table header icons */
+.table-dark th i {
+    opacity: 0.8;
+}
+
+/* Improved focus states */
+.btn:focus,
+.form-control:focus,
+.form-select:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Disabled state improvements */
+.btn:disabled,
+.form-control:disabled,
+.form-select:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+/* Table striping for better readability */
+.modern-table tbody tr:nth-of-type(even) {
+    background-color: rgba(0, 0, 0, 0.025);
+}
+
+/* Enhanced category badge colors */
+.category-badge {
+    background: linear-gradient(45deg, #0d6efd, #6610f2) !important;
+}
+
+.author-badge {
+    background: linear-gradient(45deg, #6c757d, #495057) !important;
+}
