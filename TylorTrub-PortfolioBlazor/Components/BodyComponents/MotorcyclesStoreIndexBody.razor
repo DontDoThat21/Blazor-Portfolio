@@ -2,63 +2,293 @@
 @using TylorTrubPortfolioBlazor.DTO.Models
 @inject NavigationManager nav
 
-<div class="container">
-    <h1 class="centered-nav text-info m-4 border-3 rounded-pill border-primary">Motorcycle Store - New and used Bikes</h1>
+<div class="container-fluid px-4 py-3">
+    <!-- Header Section -->
+    <div class="mb-4">
+        <MudText Typo="Typo.h3" Color="Color.Primary" Class="mb-2 fw-bold">
+            <MudIcon Icon="Icons.Material.Filled.TwoWheeler" Class="me-2" />
+            Motorcycle Store
+        </MudText>
+        <MudText Typo="Typo.subtitle1" Color="Color.Secondary">
+            Discover premium new and used motorcycles
+        </MudText>
+    </div>
 
-    <MudSimpleTable id="tblData" class="table table-bordered table-striped rounded-2 border-2 border-light">
-        <thead class="bg-dark text-primary">
-            <tr>
-                <th>Motorcycle</th>
-                <th>Manufacturer</th>
-                <th>Engine CCs</th>
-                <th>Brakes</th>
-                <th>Engine Style</th>
-                <th>HP</th>
-                <td>Torque</td>
-                <th>Image</th>
-                <th>Year</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody class="">
-            @{ int index = 0; }
-            @foreach (Motorcycle motorcycle in motorcycles)
+    <!-- Search and Filter Section -->
+    <MudCard Class="mb-4" Elevation="2">
+        <MudCardContent>
+            <MudGrid>
+                <MudItem xs="12" md="6">
+                    <MudTextField @bind-Value="searchText" 
+                                  Placeholder="Search motorcycles..." 
+                                  Adornment="Adornment.Start" 
+                                  AdornmentIcon="Icons.Material.Filled.Search"
+                                  Variant="Variant.Outlined"
+                                  Immediate="true"
+                                  DebounceInterval="300"
+                                  Class="mb-2" />
+                </MudItem>
+                <MudItem xs="12" md="3">
+                    <MudSelect @bind-Value="selectedManufacturer" 
+                               Placeholder="All Manufacturers" 
+                               Variant="Variant.Outlined"
+                               AdornmentIcon="Icons.Material.Filled.FilterList"
+                               Adornment="Adornment.Start"
+                               Clearable="true"
+                               Class="mb-2">
+                        @foreach (var manufacturer in GetUniqueManufacturers())
+                        {
+                            <MudSelectItem Value="@manufacturer">@manufacturer</MudSelectItem>
+                        }
+                    </MudSelect>
+                </MudItem>
+                <MudItem xs="12" md="3">
+                    <MudSelect @bind-Value="selectedEngineStyle" 
+                               Placeholder="All Engine Types" 
+                               Variant="Variant.Outlined"
+                               AdornmentIcon="Icons.Material.Filled.Engineering"
+                               Adornment="Adornment.Start"
+                               Clearable="true"
+                               Class="mb-2">
+                        @foreach (var engineStyle in GetUniqueEngineStyles())
+                        {
+                            <MudSelectItem Value="@engineStyle">@engineStyle</MudSelectItem>
+                        }
+                    </MudSelect>
+                </MudItem>
+            </MudGrid>
+        </MudCardContent>
+    </MudCard>
+
+    <!-- Results Count -->
+    <MudText Typo="Typo.body2" Color="Color.Secondary" Class="mb-3">
+        Showing @FilteredMotorcycles.Count() of @motorcycles.Count motorcycles
+    </MudText>
+
+    <!-- Motorcycles Grid -->
+    @if (FilteredMotorcycles.Any())
+    {
+        <MudGrid>
+            @foreach (var motorcycle in FilteredMotorcycles)
             {
-                if(index % 2 == 0)
-                {
-                    Debug.WriteLine("Even");
+                <MudItem xs="12" sm="6" md="4" lg="3">
+                    <MudCard Class="motorcycle-card h-100" Elevation="4" Style="cursor: pointer; transition: all 0.3s ease;" 
+                             @onclick="() => RedirectToDetails(motorcycle)">
+                        <!-- Image Section -->
+                        <div class="position-relative">
+                            <MudCardMedia Image="@($"Images/Home/Motorcycle/{motorcycle.Picture}")" 
+                                          Height="200" 
+                                          Style="object-fit: cover;" />
+                            <MudChip Size="Size.Small" 
+                                     Color="Color.Primary" 
+                                     Class="position-absolute top-0 end-0 m-2">
+                                @GetYearDisplay(motorcycle.Year)
+                            </MudChip>
+                            @if (!string.IsNullOrEmpty(motorcycle.Hp))
+                            {
+                                <MudChip Size="Size.Small" 
+                                         Color="Color.Secondary" 
+                                         Class="position-absolute top-0 start-0 m-2">
+                                    @motorcycle.Hp HP
+                                </MudChip>
+                            }
+                        </div>
 
-                    <tr class="bg-black">
+                        <!-- Content Section -->
+                        <MudCardContent Class="pb-2">
+                            <MudText Typo="Typo.h6" Class="fw-bold mb-2" Style="height: 3rem; overflow: hidden;">
+                                @motorcycle.MotorcycleName
+                            </MudText>
+                            
+                            <MudText Typo="Typo.body2" Color="Color.Secondary" Class="mb-2">
+                                <MudIcon Icon="Icons.Material.Filled.Motorcycle" Size="Size.Small" Class="me-1" />
+                                @motorcycle.Manufacturer
+                            </MudText>
 
-                    </tr>
-                }
-                else
-                {
-                    Debug.WriteLine("Odd");
+                            <!-- Specs Grid -->
+                            <MudGrid Class="mb-3">
+                                @if (motorcycle.MotorcycleCc.HasValue)
+                                {
+                                    <MudItem xs="6">
+                                        <MudText Typo="Typo.caption" Color="Color.Secondary">Engine</MudText>
+                                        <MudText Typo="Typo.body2" Class="fw-semibold">@(motorcycle.MotorcycleCc)cc</MudText>
+                                    </MudItem>
+                                }
+                                @if (!string.IsNullOrEmpty(motorcycle.EngineStyle))
+                                {
+                                    <MudItem xs="6">
+                                        <MudText Typo="Typo.caption" Color="Color.Secondary">Type</MudText>
+                                        <MudText Typo="Typo.body2" Class="fw-semibold">@motorcycle.EngineStyle</MudText>
+                                    </MudItem>
+                                }
+                                @if (!string.IsNullOrEmpty(motorcycle.Torque))
+                                {
+                                    <MudItem xs="6">
+                                        <MudText Typo="Typo.caption" Color="Color.Secondary">Torque</MudText>
+                                        <MudText Typo="Typo.body2" Class="fw-semibold">@motorcycle.Torque</MudText>
+                                    </MudItem>
+                                }
+                                @if (!string.IsNullOrEmpty(motorcycle.Brakes))
+                                {
+                                    <MudItem xs="6">
+                                        <MudText Typo="Typo.caption" Color="Color.Secondary">Brakes</MudText>
+                                        <MudText Typo="Typo.body2" Class="fw-semibold">@motorcycle.Brakes</MudText>
+                                    </MudItem>
+                                }
+                            </MudGrid>
+                        </MudCardContent>
 
-                    <tr class="bg-light">
-
-                    </tr>
-                }
-                    <td>@motorcycle.MotorcycleName</td>
-                    <td>@motorcycle.Manufacturer</td>
-                    <td>@motorcycle.MotorcycleCc</td>
-                    <td>@motorcycle.Brakes</td>
-                    <td>@motorcycle.EngineStyle</td>
-                    <td>@motorcycle.Hp</td>
-                    <td>@motorcycle.Torque</td>
-                    <td><img src="Images/Home/Motorcycle/@motorcycle.Picture" width="356px" height="200px" class="border-0 rounded" @onclick="() => RedirectToDetails(motorcycle)" /></td>
-                    <td>@motorcycle.Year</td>
-                    <td><MudButton Style="background: orange;" @onclick="() => RedirectToDetails(motorcycle)">BUY</MudButton></td>
-                { index++; }
+                        <!-- Action Section -->
+                        <MudCardActions Class="d-flex justify-content-between align-items-center px-3 pb-3">
+                            <MudText Typo="Typo.h6" Color="Color.Success" Class="fw-bold">
+                                $12,929.99
+                            </MudText>
+                            <MudButton Variant="Variant.Filled" 
+                                       Color="Color.Warning" 
+                                       StartIcon="Icons.Material.Filled.ShoppingCart"
+                                       Size="Size.Small"
+                                       @onclick="() => RedirectToDetails(motorcycle)"
+                                       @onclick:stopPropagation="true">
+                                Buy Now
+                            </MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
             }
-        </tbody>
-    </MudSimpleTable>
+        </MudGrid>
+    }
+    else
+    {
+        <!-- No Results -->
+        <MudPaper Class="pa-8 text-center" Elevation="1">
+            <MudIcon Icon="Icons.Material.Outlined.SearchOff" Size="Size.Large" Color="Color.Secondary" Class="mb-4" />
+            <MudText Typo="Typo.h6" Class="mb-2">No motorcycles found</MudText>
+            <MudText Typo="Typo.body2" Color="Color.Secondary">
+                Try adjusting your search criteria or clear the filters.
+            </MudText>
+            <MudButton Variant="Variant.Text" 
+                       Color="Color.Primary" 
+                       Class="mt-3"
+                       @onclick="ClearFilters">
+                Clear Filters
+            </MudButton>
+        </MudPaper>
+    }
 </div>
+
+<style>
+    .motorcycle-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0,0,0,0.15) !important;
+    }
+
+    .motorcycle-card .mud-card-media img {
+        transition: transform 0.3s ease;
+    }
+
+    .motorcycle-card:hover .mud-card-media img {
+        transform: scale(1.05);
+    }
+
+    .position-relative {
+        position: relative !important;
+    }
+
+    .position-absolute {
+        position: absolute !important;
+    }
+
+    .top-0 {
+        top: 0 !important;
+    }
+
+    .start-0 {
+        left: 0 !important;
+    }
+
+    .end-0 {
+        right: 0 !important;
+    }
+
+    .h-100 {
+        height: 100% !important;
+    }
+</style>
 
 @code {
     [Parameter]
-    public List<Motorcycle> motorcycles { get; set; }
+    public List<Motorcycle> motorcycles { get; set; } = new();
+
+    private string searchText = "";
+    private string selectedManufacturer = "";
+    private string selectedEngineStyle = "";
+
+    private IEnumerable<Motorcycle> FilteredMotorcycles
+    {
+        get
+        {
+            var filtered = motorcycles.AsEnumerable();
+
+            // Search filter
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                filtered = filtered.Where(m => 
+                    (m.MotorcycleName?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                    (m.Manufacturer?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                    (m.EngineStyle?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                    (m.Brakes?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                    (m.Hp?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                    (m.Torque?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                    (m.MotorcycleCc?.ToString().Contains(searchText) ?? false) ||
+                    GetYearDisplay(m.Year).Contains(searchText, StringComparison.OrdinalIgnoreCase)
+                );
+            }
+
+            // Manufacturer filter
+            if (!string.IsNullOrWhiteSpace(selectedManufacturer))
+            {
+                filtered = filtered.Where(m => m.Manufacturer == selectedManufacturer);
+            }
+
+            // Engine style filter
+            if (!string.IsNullOrWhiteSpace(selectedEngineStyle))
+            {
+                filtered = filtered.Where(m => m.EngineStyle == selectedEngineStyle);
+            }
+
+            return filtered;
+        }
+    }
+
+    private IEnumerable<string> GetUniqueManufacturers()
+    {
+        return motorcycles
+            .Where(m => !string.IsNullOrWhiteSpace(m.Manufacturer))
+            .Select(m => m.Manufacturer)
+            .Distinct()
+            .OrderBy(x => x);
+    }
+
+    private IEnumerable<string> GetUniqueEngineStyles()
+    {
+        return motorcycles
+            .Where(m => !string.IsNullOrWhiteSpace(m.EngineStyle))
+            .Select(m => m.EngineStyle)
+            .Distinct()
+            .OrderBy(x => x);
+    }
+
+    private string GetYearDisplay(byte? year)
+    {
+        return year.HasValue ? $"20{year:D2}" : "N/A";
+    }
+
+    private void ClearFilters()
+    {
+        searchText = "";
+        selectedManufacturer = "";
+        selectedEngineStyle = "";
+    }
 
     private async Task RedirectToDetails(Motorcycle motorcycle)
     {

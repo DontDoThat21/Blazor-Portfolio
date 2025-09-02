@@ -53,6 +53,7 @@ namespace TylorTrubPortfolioBlazor
             builder.Services.AddScoped<IGamesService, GamesService>();
             builder.Services.AddScoped<ICompaniesService, CompaniesService>();
             builder.Services.AddScoped<ICategoriesService, CategoriesService>();
+            builder.Services.AddScoped<ICartsService, CartsService>();
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<TylorTrubPortfolio.Client.BL.IEmailSender, TylorTrubPortfolio.Client.BL.EmailSender>();
