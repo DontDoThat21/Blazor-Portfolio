@@ -578,14 +578,14 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                     Name = "FrameworkWebForms",
                     Language = "C#.NET FW",
                     Url = "https://github.com/DontDoThat21/FrameworkWebForms",
-                    ProjectPhoto = "b.png"
+                    ProjectPhoto = "frameworkWebForms.png"
                 });
 
             modelBuilder.Entity<Project>().HasData(
                 new Project
                 {
                     Id = 10,
-                    Name = "CppCalculator",
+                    Name = "C++ Calculator",
                     Language = "C++",
                     Url = "https://github.com/DontDoThat21/TylorTrubCppCalculator",
                     ProjectPhoto = "cppCalculator.png"
@@ -844,16 +844,6 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
             modelBuilder.Entity<Project>().HasData(
                 new Project
                 {
-                    Id = 81,
-                    Name = "FrameworkWebForms",
-                    Language = "C#.NET Framework, ASP.NET",
-                    Url = "https://github.com/DontDoThat21/FrameworkWebForms.git",
-                    ProjectPhoto = "frameworkWebForms.png"
-                });
-
-            modelBuilder.Entity<Project>().HasData(
-                new Project
-                {
                     Id = 82,
                     Name = "GithubIssueManager",
                     Language = "C#, GitHub API",
@@ -1009,16 +999,6 @@ namespace TylorTrubPortfolioBlazor.Server.BL.Data
                     Language = "C#, Windows API",
                     Url = "https://github.com/DontDoThat21/PowerKeys.git",
                     ProjectPhoto = "powerKeys.png"
-                });
-
-            modelBuilder.Entity<Project>().HasData(
-                new Project
-                {
-                    Id = 98,
-                    Name = "PythonMaze",
-                    Language = "Python",
-                    Url = "https://github.com/DontDoThat21/PythonMaze.git",
-                    ProjectPhoto = "pythonMaze.png"
                 });
 
             modelBuilder.Entity<Project>().HasData(
