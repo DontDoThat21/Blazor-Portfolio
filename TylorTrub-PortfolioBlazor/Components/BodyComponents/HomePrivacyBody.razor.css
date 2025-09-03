@@ -1,0 +1,209 @@
+/* HomePrivacyBody Component Styles */
+
+.privacy-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.privacy-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid #f0f2f5;
+}
+
+.privacy-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.privacy-icon {
+    color: #0071c1;
+    font-size: 2rem;
+}
+
+.privacy-subtitle {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.privacy-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.privacy-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.privacy-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card-icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #0071c1, #1b6ec2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.card-content {
+    flex: 1;
+}
+
+.card-content h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0 0 1rem 0;
+}
+
+.card-content p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #495057;
+    margin: 0;
+}
+
+.main-policy {
+    border-left: 4px solid #28a745;
+}
+
+.technical-note {
+    border-left: 4px solid #ffc107;
+}
+
+.highlight-box {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    padding: 1.25rem;
+    border-radius: 8px;
+    border-left: 4px solid #ffc107;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.highlight-box strong {
+    color: #856404;
+}
+
+.signature-card {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-left: 4px solid #6c757d;
+    text-align: center;
+}
+
+.signature-card .card-content {
+    width: 100%;
+}
+
+.signature-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.signature-text {
+    font-size: 1.1rem;
+    color: #495057;
+    margin: 0;
+    font-style: italic;
+}
+
+.signature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 1.8rem;
+    color: #2c3e50;
+}
+
+.signature-dash {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 300;
+}
+
+.signature-name {
+    font-weight: 600;
+    position: relative;
+}
+
+.signature-name::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #0071c1, transparent);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .privacy-container {
+        padding: 1.5rem 0.5rem;
+    }
+
+    .privacy-title {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .privacy-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .card-icon {
+        align-self: center;
+        margin-top: 0;
+    }
+
+    .signature {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .privacy-title {
+        font-size: 1.8rem;
+    }
+
+    .privacy-card {
+        padding: 1.25rem;
+    }
+
+    .card-content h3 {
+        font-size: 1.2rem;
+    }
+}

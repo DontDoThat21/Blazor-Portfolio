@@ -1,19 +1,51 @@
-﻿<h2 style="padding: 5px">Privacy Details</h2>
-<div style="padding: 15px">
-    <p>
-        My (Tylor Trub) developer portfolio site does not collect personally identifiable information about the actions made,
-        or patterns of usage of the site. Depending on how you created your account(s), the addresses you entered may be stored in the site's connected LOCAL database. Feel free to go wild and attempt to break anything.
-    </p>
-    <p>
-        <b>Note to be extra clear:</b> Not connected to any external Databases, but is in theory connected by default to the developers local MS Sql Server connection. You'd still have no data, and would need to run EF data migrations to create the dataset, first.
-    </p>
-    <p>
-        Thank you for visiting,
-        <br />
-        &nbsp;&nbsp;&nbsp;&nbsp; - Tylor.
-    </p>
-</div>
+﻿<div class="privacy-container">
+    <div class="privacy-header">
+        <h2 class="privacy-title">
+            <i class="fas fa-shield-alt privacy-icon" aria-hidden="true"></i>
+            Privacy Details
+        </h2>
+        <div class="privacy-subtitle">Your privacy matters to us</div>
+    </div>
 
+    <div class="privacy-content">
+        <div class="privacy-card main-policy">
+            <div class="card-icon">
+                <i class="fas fa-user-shield" aria-hidden="true"></i>
+            </div>
+            <div class="card-content">
+                <h3>Data Collection Policy</h3>
+                <p>
+                    My (Tylor Trub) developer portfolio site does not collect personally identifiable information about the actions made,
+                    or patterns of usage of the site. Depending on how you created your account(s), the addresses you entered may be stored in the site's connected LOCAL database. Feel free to go wild and attempt to break anything.
+                </p>
+            </div>
+        </div>
+
+        <div class="privacy-card technical-note">
+            <div class="card-icon">
+                <i class="fas fa-database" aria-hidden="true"></i>
+            </div>
+            <div class="card-content">
+                <h3>Technical Information</h3>
+                <div class="highlight-box">
+                    <strong>Note to be extra clear:</strong> Not connected to any external Databases, but is in theory connected by default to the developers local MS Sql Server connection. You'd still have no data, and would need to run EF data migrations to create the dataset, first.
+                </div>
+            </div>
+        </div>
+
+        <div class="privacy-card signature-card">
+            <div class="card-content">
+                <div class="signature-section">
+                    <p class="signature-text">Thank you for visiting,</p>
+                    <div class="signature">
+                        <span class="signature-dash">—</span>
+                        <span class="signature-name">Tylor</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @code {
 
