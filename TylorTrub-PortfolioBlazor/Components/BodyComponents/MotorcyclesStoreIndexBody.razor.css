@@ -1,0 +1,249 @@
+/* Dark Theme Motorcycles Store Styles */
+
+/* Container and General Styling */
+.container-fluid {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #0f0a19 100%);
+    min-height: 100vh;
+    color: #ffffff;
+}
+
+/* Header Section */
+.text-primary {
+    color: #00f5ff !important;
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+}
+
+.text-muted {
+    color: #b8b8b8 !important;
+}
+
+/* Buttons */
+.btn-outline-secondary {
+    border-color: #6c757d;
+    color: #ffffff;
+    background: rgba(108, 117, 125, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 245, 255, 0.3);
+}
+
+.btn-outline-secondary:hover {
+    background: rgba(0, 245, 255, 0.2);
+    border-color: #00f5ff;
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.4);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #00f5ff, #0080ff);
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #0080ff, #00f5ff);
+    box-shadow: 0 0 25px rgba(0, 245, 255, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Input Groups and Forms */
+.input-group-text {
+    background: rgba(0, 0, 0, 0.6) !important;
+    border-color: rgba(0, 245, 255, 0.3) !important;
+    color: #00f5ff !important;
+}
+
+.form-control, .form-select {
+    background: rgba(0, 0, 0, 0.6) !important;
+    border-color: rgba(0, 245, 255, 0.3) !important;
+    color: #ffffff !important;
+    backdrop-filter: blur(10px);
+}
+
+.form-control:focus, .form-select:focus {
+    background: rgba(0, 0, 0, 0.8) !important;
+    border-color: #00f5ff !important;
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.3) !important;
+    color: #ffffff !important;
+}
+
+.form-control::placeholder {
+    color: #b8b8b8 !important;
+}
+
+/* Results Summary */
+.text-info {
+    color: #00f5ff !important;
+}
+
+/* Card Styling */
+.product-table-card {
+    background: rgba(0, 0, 0, 0.7) !important;
+    border: 1px solid rgba(0, 245, 255, 0.3) !important;
+    box-shadow: 0 0 30px rgba(0, 245, 255, 0.1) !important;
+    backdrop-filter: blur(20px);
+}
+
+/* Table Styling */
+.table {
+    color: #ffffff !important;
+    background: transparent !important;
+}
+
+.table-dark {
+    background: linear-gradient(135deg, #1a0a2e, #16213e) !important;
+    border-bottom: 2px solid #00f5ff;
+}
+
+.table-dark th {
+    border-color: rgba(0, 245, 255, 0.3) !important;
+    color: #00f5ff !important;
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+    font-weight: 600;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid rgba(0, 245, 255, 0.2) !important;
+    transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background: rgba(0, 245, 255, 0.1) !important;
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.table td {
+    border-color: rgba(0, 245, 255, 0.1) !important;
+    vertical-align: middle;
+}
+
+/* Motorcycle Icon */
+.motorcycle-icon {
+    background: rgba(0, 245, 255, 0.2) !important;
+    border: 1px solid rgba(0, 245, 255, 0.4);
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.3);
+}
+
+.motorcycle-icon .bi {
+    color: #00f5ff !important;
+}
+
+/* Text Highlighting */
+.text-highlight {
+    color: #ffffff !important;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+/* Badges */
+.manufacturer-badge {
+    background: linear-gradient(135deg, #ff6b6b, #ff4757) !important;
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.4);
+}
+
+.badge.bg-secondary {
+    background: linear-gradient(135deg, #a0a0a0, #7f8c8d) !important;
+    box-shadow: 0 0 10px rgba(160, 160, 160, 0.4);
+}
+
+.year-badge {
+    background: linear-gradient(135deg, #feca57, #ff9ff3) !important;
+    color: #000000 !important;
+    box-shadow: 0 0 10px rgba(254, 202, 87, 0.4);
+}
+
+/* Code and Special Text */
+.cc-code {
+    background: rgba(0, 245, 255, 0.2) !important;
+    color: #00f5ff !important;
+    border: 1px solid rgba(0, 245, 255, 0.3);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.2);
+}
+
+.hp-torque-display {
+    color: #ff6348;
+    font-weight: 600;
+    text-shadow: 0 0 5px rgba(255, 99, 72, 0.5);
+}
+
+/* Motorcycle Image */
+.motorcycle-image {
+    transition: all 0.3s ease;
+    border: 2px solid rgba(0, 245, 255, 0.3) !important;
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.3);
+}
+
+.motorcycle-image:hover {
+    transform: scale(1.05);
+    border-color: #00f5ff !important;
+    box-shadow: 0 0 25px rgba(0, 245, 255, 0.6);
+    cursor: pointer;
+}
+
+/* Action Buttons */
+.action-buttons .btn {
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary {
+    border-color: #00f5ff;
+    color: #00f5ff;
+    background: rgba(0, 245, 255, 0.1);
+}
+
+.btn-outline-primary:hover {
+    background: rgba(0, 245, 255, 0.2);
+    border-color: #00f5ff;
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.4);
+}
+
+.buy-button {
+    background: linear-gradient(135deg, #32ff7e, #7efff5);
+    color: #000000;
+    border: none;
+    font-weight: 600;
+    box-shadow: 0 0 15px rgba(50, 255, 126, 0.4);
+}
+
+.buy-button:hover {
+    background: linear-gradient(135deg, #7efff5, #32ff7e);
+    box-shadow: 0 0 25px rgba(50, 255, 126, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Empty State */
+.empty-state {
+    color: #b8b8b8;
+}
+
+.empty-state .bi {
+    color: #6c757d;
+}
+
+/* Loading Skeleton */
+.placeholder {
+    background: linear-gradient(90deg, rgba(0, 245, 255, 0.1), rgba(0, 245, 255, 0.2), rgba(0, 245, 255, 0.1));
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 1rem;
+    }
+    
+    .table-responsive {
+        border: 1px solid rgba(0, 245, 255, 0.3);
+        border-radius: 8px;
+    }
+}
