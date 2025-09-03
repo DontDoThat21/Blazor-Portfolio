@@ -2,292 +2,321 @@
 @using TylorTrubPortfolioBlazor.DTO.Models
 @inject NavigationManager nav
 
-<div class="container-fluid px-4 py-3">
+<div class="container-fluid px-4">
     <!-- Header Section -->
-    <div class="mb-4">
-        <MudText Typo="Typo.h3" Color="Color.Primary" Class="mb-2 fw-bold">
-            <MudIcon Icon="Icons.Material.Filled.TwoWheeler" Class="me-2" />
-            Motorcycle Store
-        </MudText>
-        <MudText Typo="Typo.subtitle1" Color="Color.Secondary">
-            Discover premium new and used motorcycles
-        </MudText>
+    <div class="row align-items-center mb-4 pt-4">
+        <div class="col-12 col-md-6">
+            <h2 class="text-primary fw-bold mb-2">
+                <i class="bi bi-bicycle"></i> Motorcycle Store
+            </h2>
+            <p class="text-muted mb-0">New and used bikes inventory</p>
+        </div>
+        <div class="col-12 col-md-6 mt-3 mt-md-0">
+            <div class="d-flex gap-2 justify-content-md-end">
+                <button class="btn btn-outline-secondary" @onclick="ClearFilters" disabled="@(isLoading)">
+                    <i class="bi bi-arrow-clockwise"></i> Reset
+                </button>
+                <a class="btn btn-primary shadow-sm">
+                    <i class="bi bi-plus-circle"></i> Add New Motorcycle
+                </a>
+            </div>
+        </div>
     </div>
 
     <!-- Search and Filter Section -->
-    <MudCard Class="mb-4" Elevation="2">
-        <MudCardContent>
-            <MudGrid>
-                <MudItem xs="12" md="6">
-                    <MudTextField @bind-Value="searchText" 
-                                  Placeholder="Search motorcycles..." 
-                                  Adornment="Adornment.Start" 
-                                  AdornmentIcon="Icons.Material.Filled.Search"
-                                  Variant="Variant.Outlined"
-                                  Immediate="true"
-                                  DebounceInterval="300"
-                                  Class="mb-2" />
-                </MudItem>
-                <MudItem xs="12" md="3">
-                    <MudSelect @bind-Value="selectedManufacturer" 
-                               Placeholder="All Manufacturers" 
-                               Variant="Variant.Outlined"
-                               AdornmentIcon="Icons.Material.Filled.FilterList"
-                               Adornment="Adornment.Start"
-                               Clearable="true"
-                               Class="mb-2">
-                        @foreach (var manufacturer in GetUniqueManufacturers())
-                        {
-                            <MudSelectItem Value="@manufacturer">@manufacturer</MudSelectItem>
-                        }
-                    </MudSelect>
-                </MudItem>
-                <MudItem xs="12" md="3">
-                    <MudSelect @bind-Value="selectedEngineStyle" 
-                               Placeholder="All Engine Types" 
-                               Variant="Variant.Outlined"
-                               AdornmentIcon="Icons.Material.Filled.Engineering"
-                               Adornment="Adornment.Start"
-                               Clearable="true"
-                               Class="mb-2">
-                        @foreach (var engineStyle in GetUniqueEngineStyles())
-                        {
-                            <MudSelectItem Value="@engineStyle">@engineStyle</MudSelectItem>
-                        }
-                    </MudSelect>
-                </MudItem>
-            </MudGrid>
-        </MudCardContent>
-    </MudCard>
+    <div class="row g-3 mb-4">
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="input-group">
+                <span class="input-group-text bg-light border-end-0">
+                    <i class="bi bi-search text-muted"></i>
+                </span>
+                <input type="text" class="form-control border-start-0 shadow-sm" 
+                       placeholder="Search by name..." 
+                       @bind="nameFilter" 
+                       @bind:event="oninput"
+                       disabled="@(isLoading)" />
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="input-group">
+                <span class="input-group-text bg-light border-end-0">
+                    <i class="bi bi-gear text-muted"></i>
+                </span>
+                <input type="text" class="form-control border-start-0 shadow-sm" 
+                       placeholder="Search by manufacturer..." 
+                       @bind="manufacturerFilter" 
+                       @bind:event="oninput"
+                       disabled="@(isLoading)" />
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <select class="form-select shadow-sm" @bind="engineStyleFilter" disabled="@(isLoading)">
+                <option value="">All Engine Styles</option>
+                @foreach (var style in uniqueEngineStyles)
+                {
+                    <option value="@style">@style</option>
+                }
+            </select>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <select class="form-select shadow-sm" @bind="yearFilter" disabled="@(isLoading)">
+                <option value="">All Years</option>
+                @foreach (var year in uniqueYears.OrderByDescending(y => y))
+                {
+                    <option value="@year">@year</option>
+                }
+            </select>
+        </div>
+    </div>
 
-    <!-- Results Count -->
-    <MudText Typo="Typo.body2" Color="Color.Secondary" Class="mb-3">
-        Showing @FilteredMotorcycles.Count() of @motorcycles.Count motorcycles
-    </MudText>
+    <!-- Results Summary -->
+    <div class="row mb-3">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                @if (isLoading)
+                {
+                    <small class="text-muted">
+                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                        Loading motorcycles...
+                    </small>
+                }
+                else
+                {
+                    <small class="text-muted">
+                        Showing <strong>@filteredMotorcycles.Count</strong> of <strong>@motorcycles.Count</strong> motorcycles
+                    </small>
+                }
+                @if (hasActiveFilters && !isLoading)
+                {
+                    <small class="text-info">
+                        <i class="bi bi-funnel"></i> Filters active
+                    </small>
+                }
+            </div>
+        </div>
+    </div>
 
-    <!-- Motorcycles Grid -->
-    @if (FilteredMotorcycles.Any())
-    {
-        <MudGrid>
-            @foreach (var motorcycle in FilteredMotorcycles)
-            {
-                <MudItem xs="12" sm="6" md="4" lg="3">
-                    <MudCard Class="motorcycle-card h-100" Elevation="4" Style="cursor: pointer; transition: all 0.3s ease;" 
-                             @onclick="() => RedirectToDetails(motorcycle)">
-                        <!-- Image Section -->
-                        <div class="position-relative">
-                            <MudCardMedia Image="@($"Images/Home/Motorcycle/{motorcycle.Picture}")" 
-                                          Height="200" 
-                                          Style="object-fit: cover;" />
-                            <MudChip Size="Size.Small" 
-                                     Color="Color.Primary" 
-                                     Class="position-absolute top-0 end-0 m-2">
-                                @GetYearDisplay(motorcycle.Year)
-                            </MudChip>
-                            @if (!string.IsNullOrEmpty(motorcycle.Hp))
-                            {
-                                <MudChip Size="Size.Small" 
-                                         Color="Color.Secondary" 
-                                         Class="position-absolute top-0 start-0 m-2">
-                                    @motorcycle.Hp HP
-                                </MudChip>
-                            }
+    <!-- Motorcycles Table -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm product-table-card">
+                <div class="card-body p-0">
+                    @if (isLoading)
+                    {
+                        <!-- Loading Skeleton -->
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col" class="border-0 py-3">
+                                            <i class="bi bi-bicycle me-2"></i>Motorcycle
+                                        </th>
+                                        <th scope="col" class="border-0 py-3">
+                                            <i class="bi bi-gear me-2"></i>Manufacturer
+                                        </th>
+                                        <th scope="col" class="border-0 py-3">
+                                            <i class="bi bi-speedometer2 me-2"></i>Engine
+                                        </th>
+                                        <th scope="col" class="border-0 py-3">
+                                            <i class="bi bi-shield-check me-2"></i>Brakes
+                                        </th>
+                                        <th scope="col" class="border-0 py-3">
+                                            <i class="bi bi-lightning me-2"></i>Power
+                                        </th>
+                                        <th scope="col" class="border-0 py-3">
+                                            <i class="bi bi-image me-2"></i>Image
+                                        </th>
+                                        <th scope="col" class="border-0 py-3">
+                                            <i class="bi bi-calendar me-2"></i>Year
+                                        </th>
+                                        <th scope="col" class="border-0 py-3 text-end">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int i = 0; i < 5; i++)
+                                    {
+                                        <tr class="placeholder-wave">
+                                            <td class="py-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="bg-light rounded-circle p-2 me-3 placeholder" style="width: 40px; height: 40px;"></div>
+                                                    <div>
+                                                        <div class="placeholder placeholder-lg col-8 mb-1"></div>
+                                                        <div class="placeholder col-6"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="py-3"><div class="placeholder col-10"></div></td>
+                                            <td class="py-3"><div class="placeholder col-8"></div></td>
+                                            <td class="py-3"><div class="placeholder col-9"></div></td>
+                                            <td class="py-3"><div class="placeholder col-7"></div></td>
+                                            <td class="py-3"><div class="placeholder col-12"></div></td>
+                                            <td class="py-3"><div class="placeholder col-6"></div></td>
+                                            <td class="py-3 text-end"><div class="placeholder col-12"></div></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
                         </div>
-
-                        <!-- Content Section -->
-                        <MudCardContent Class="pb-2">
-                            <MudText Typo="Typo.h6" Class="fw-bold mb-2" Style="height: 3rem; overflow: hidden;">
-                                @motorcycle.MotorcycleName
-                            </MudText>
-                            
-                            <MudText Typo="Typo.body2" Color="Color.Secondary" Class="mb-2">
-                                <MudIcon Icon="Icons.Material.Filled.Motorcycle" Size="Size.Small" Class="me-1" />
-                                @motorcycle.Manufacturer
-                            </MudText>
-
-                            <!-- Specs Grid -->
-                            <MudGrid Class="mb-3">
-                                @if (motorcycle.MotorcycleCc.HasValue)
-                                {
-                                    <MudItem xs="6">
-                                        <MudText Typo="Typo.caption" Color="Color.Secondary">Engine</MudText>
-                                        <MudText Typo="Typo.body2" Class="fw-semibold">@(motorcycle.MotorcycleCc)cc</MudText>
-                                    </MudItem>
-                                }
-                                @if (!string.IsNullOrEmpty(motorcycle.EngineStyle))
-                                {
-                                    <MudItem xs="6">
-                                        <MudText Typo="Typo.caption" Color="Color.Secondary">Type</MudText>
-                                        <MudText Typo="Typo.body2" Class="fw-semibold">@motorcycle.EngineStyle</MudText>
-                                    </MudItem>
-                                }
-                                @if (!string.IsNullOrEmpty(motorcycle.Torque))
-                                {
-                                    <MudItem xs="6">
-                                        <MudText Typo="Typo.caption" Color="Color.Secondary">Torque</MudText>
-                                        <MudText Typo="Typo.body2" Class="fw-semibold">@motorcycle.Torque</MudText>
-                                    </MudItem>
-                                }
-                                @if (!string.IsNullOrEmpty(motorcycle.Brakes))
-                                {
-                                    <MudItem xs="6">
-                                        <MudText Typo="Typo.caption" Color="Color.Secondary">Brakes</MudText>
-                                        <MudText Typo="Typo.body2" Class="fw-semibold">@motorcycle.Brakes</MudText>
-                                    </MudItem>
-                                }
-                            </MudGrid>
-                        </MudCardContent>
-
-                        <!-- Action Section -->
-                        <MudCardActions Class="d-flex justify-content-between align-items-center px-3 pb-3">
-                            <MudText Typo="Typo.h6" Color="Color.Success" Class="fw-bold">
-                                $12,929.99
-                            </MudText>
-                            <MudButton Variant="Variant.Filled" 
-                                       Color="Color.Warning" 
-                                       StartIcon="Icons.Material.Filled.ShoppingCart"
-                                       Size="Size.Small"
-                                       @onclick="() => RedirectToDetails(motorcycle)"
-                                       @onclick:stopPropagation="true">
-                                Buy Now
-                            </MudButton>
-                        </MudCardActions>
-                    </MudCard>
-                </MudItem>
-            }
-        </MudGrid>
-    }
-    else
-    {
-        <!-- No Results -->
-        <MudPaper Class="pa-8 text-center" Elevation="1">
-            <MudIcon Icon="Icons.Material.Outlined.SearchOff" Size="Size.Large" Color="Color.Secondary" Class="mb-4" />
-            <MudText Typo="Typo.h6" Class="mb-2">No motorcycles found</MudText>
-            <MudText Typo="Typo.body2" Color="Color.Secondary">
-                Try adjusting your search criteria or clear the filters.
-            </MudText>
-            <MudButton Variant="Variant.Text" 
-                       Color="Color.Primary" 
-                       Class="mt-3"
-                       @onclick="ClearFilters">
-                Clear Filters
-            </MudButton>
-        </MudPaper>
-    }
+                    }
+                    else if (filteredMotorcycles.Count == 0)
+                    {
+                        <div class="text-center py-5 empty-state">
+                            <i class="bi bi-search display-1 text-muted mb-3"></i>
+                            <h5 class="text-muted">No motorcycles found</h5>
+                            <p class="text-muted mb-0">Try adjusting your search criteria or 
+                                <button class="btn btn-link p-0 fw-semibold" @onclick="ClearFilters">clear all filters</button>
+                            </p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0 modern-table">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col" class="border-0 py-3">
+                                            <i class="bi bi-bicycle me-2"></i>Motorcycle
+                                        </th>
+                                        <th scope="col" class="border-0 py-3">
+                                            <i class="bi bi-gear me-2"></i>Manufacturer
+                                        </th>
+                                        <th scope="col" class="border-0 py-3">
+                                            <i class="bi bi-speedometer2 me-2"></i>Engine
+                                        </th>
+                                        <th scope="col" class="border-0 py-3">
+                                            <i class="bi bi-shield-check me-2"></i>Brakes
+                                        </th>
+                                        <th scope="col" class="border-0 py-3">
+                                            <i class="bi bi-lightning me-2"></i>Power
+                                        </th>
+                                        <th scope="col" class="border-0 py-3">
+                                            <i class="bi bi-image me-2"></i>Image
+                                        </th>
+                                        <th scope="col" class="border-0 py-3">
+                                            <i class="bi bi-calendar me-2"></i>Year
+                                        </th>
+                                        <th scope="col" class="border-0 py-3 text-end">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var motorcycle in filteredMotorcycles)
+                                    {
+                                        <tr class="border-bottom">
+                                            <td class="py-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="bg-primary bg-opacity-10 rounded-circle p-2 me-3 motorcycle-icon">
+                                                        <i class="bi bi-bicycle text-primary"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h6 class="mb-0 fw-semibold text-highlight">@motorcycle.MotorcycleName</h6>
+                                                        <small class="text-muted">@motorcycle.EngineStyle Engine</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="py-3">
+                                                <span class="badge bg-success bg-opacity-75 manufacturer-badge">@motorcycle.Manufacturer</span>
+                                            </td>
+                                            <td class="py-3">
+                                                <div>
+                                                    <code class="cc-code">@motorcycle.MotorcycleCc CC</code>
+                                                    <br />
+                                                    <small class="text-muted">@motorcycle.EngineStyle</small>
+                                                </div>
+                                            </td>
+                                            <td class="py-3">
+                                                <span class="badge bg-secondary bg-opacity-75">@motorcycle.Brakes</span>
+                                            </td>
+                                            <td class="py-3">
+                                                <div>
+                                                    <span class="hp-torque-display">@motorcycle.Hp HP</span>
+                                                    <br />
+                                                    <small class="text-muted">@motorcycle.Torque Torque</small>
+                                                </div>
+                                            </td>
+                                            <td class="py-3">
+                                                <img src="Images/Home/Motorcycle/@motorcycle.Picture" 
+                                                     width="80" height="60" 
+                                                     class="border-0 rounded motorcycle-image" 
+                                                     @onclick="() => RedirectToDetails(motorcycle)"
+                                                     alt="@motorcycle.MotorcycleName" />
+                                            </td>
+                                            <td class="py-3">
+                                                <span class="badge bg-warning bg-opacity-75 year-badge">@motorcycle.Year</span>
+                                            </td>
+                                            <td class="py-3 text-end">
+                                                <div class="btn-group action-buttons" role="group">
+                                                    <button type="button" class="btn btn-sm btn-outline-primary" 
+                                                            title="View Details"
+                                                            @onclick="() => RedirectToDetails(motorcycle)">
+                                                        <i class="bi bi-eye"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-sm buy-button" 
+                                                            title="Buy Now"
+                                                            @onclick="() => RedirectToDetails(motorcycle)">
+                                                        <i class="bi bi-cart-plus"></i> BUY
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-<style>
-    .motorcycle-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 24px rgba(0,0,0,0.15) !important;
-    }
-
-    .motorcycle-card .mud-card-media img {
-        transition: transform 0.3s ease;
-    }
-
-    .motorcycle-card:hover .mud-card-media img {
-        transform: scale(1.05);
-    }
-
-    .position-relative {
-        position: relative !important;
-    }
-
-    .position-absolute {
-        position: absolute !important;
-    }
-
-    .top-0 {
-        top: 0 !important;
-    }
-
-    .start-0 {
-        left: 0 !important;
-    }
-
-    .end-0 {
-        right: 0 !important;
-    }
-
-    .h-100 {
-        height: 100% !important;
-    }
-</style>
 
 @code {
     [Parameter]
     public List<Motorcycle> motorcycles { get; set; } = new();
 
-    private string searchText = "";
-    private string selectedManufacturer = "";
-    private string selectedEngineStyle = "";
+    private bool isLoading = false;
+    private string nameFilter = string.Empty;
+    private string manufacturerFilter = string.Empty;
+    private string engineStyleFilter = string.Empty;
+    private string yearFilter = string.Empty;
 
-    private IEnumerable<Motorcycle> FilteredMotorcycles
+    protected override async Task OnParametersSetAsync()
     {
-        get
-        {
-            var filtered = motorcycles.AsEnumerable();
-
-            // Search filter
-            if (!string.IsNullOrWhiteSpace(searchText))
-            {
-                filtered = filtered.Where(m => 
-                    (m.MotorcycleName?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
-                    (m.Manufacturer?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
-                    (m.EngineStyle?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
-                    (m.Brakes?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
-                    (m.Hp?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
-                    (m.Torque?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
-                    (m.MotorcycleCc?.ToString().Contains(searchText) ?? false) ||
-                    GetYearDisplay(m.Year).Contains(searchText, StringComparison.OrdinalIgnoreCase)
-                );
-            }
-
-            // Manufacturer filter
-            if (!string.IsNullOrWhiteSpace(selectedManufacturer))
-            {
-                filtered = filtered.Where(m => m.Manufacturer == selectedManufacturer);
-            }
-
-            // Engine style filter
-            if (!string.IsNullOrWhiteSpace(selectedEngineStyle))
-            {
-                filtered = filtered.Where(m => m.EngineStyle == selectedEngineStyle);
-            }
-
-            return filtered;
-        }
+        isLoading = motorcycles == null || motorcycles.Count == 0;
+        await Task.Delay(100); // Simulate loading for demonstration
+        isLoading = false;
+        StateHasChanged();
     }
 
-    private IEnumerable<string> GetUniqueManufacturers()
-    {
-        return motorcycles
-            .Where(m => !string.IsNullOrWhiteSpace(m.Manufacturer))
-            .Select(m => m.Manufacturer)
-            .Distinct()
-            .OrderBy(x => x);
-    }
+    private List<Motorcycle> filteredMotorcycles => motorcycles.Where(m =>
+        (string.IsNullOrEmpty(nameFilter) || m.MotorcycleName.Contains(nameFilter, StringComparison.OrdinalIgnoreCase)) &&
+        (string.IsNullOrEmpty(manufacturerFilter) || m.Manufacturer.Contains(manufacturerFilter, StringComparison.OrdinalIgnoreCase)) &&
+        (string.IsNullOrEmpty(engineStyleFilter) || m.EngineStyle.Equals(engineStyleFilter, StringComparison.OrdinalIgnoreCase)) &&
+        (string.IsNullOrEmpty(yearFilter) || m.Year?.ToString().Equals(yearFilter) == true)
+    ).ToList();
 
-    private IEnumerable<string> GetUniqueEngineStyles()
-    {
-        return motorcycles
-            .Where(m => !string.IsNullOrWhiteSpace(m.EngineStyle))
-            .Select(m => m.EngineStyle)
-            .Distinct()
-            .OrderBy(x => x);
-    }
+    private List<string> uniqueEngineStyles => motorcycles
+        .Select(m => m.EngineStyle)
+        .Distinct()
+        .OrderBy(s => s)
+        .ToList();
 
-    private string GetYearDisplay(byte? year)
-    {
-        return year.HasValue ? $"20{year:D2}" : "N/A";
-    }
+    private List<byte?> uniqueYears => motorcycles
+        .Select(m => m.Year)
+        .Distinct()
+        .OrderBy(y => y)
+        .ToList();
+
+    private bool hasActiveFilters => !string.IsNullOrEmpty(nameFilter) || 
+                                   !string.IsNullOrEmpty(manufacturerFilter) || 
+                                   !string.IsNullOrEmpty(engineStyleFilter) || 
+                                   !string.IsNullOrEmpty(yearFilter);
 
     private void ClearFilters()
     {
-        searchText = "";
-        selectedManufacturer = "";
-        selectedEngineStyle = "";
+        nameFilter = string.Empty;
+        manufacturerFilter = string.Empty;
+        engineStyleFilter = string.Empty;
+        yearFilter = string.Empty;
     }
 
     private async Task RedirectToDetails(Motorcycle motorcycle)
