@@ -24,7 +24,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
 	  <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
-    <PackageReference Include="MudBlazor" Version="6.19.1" />
     <PackageReference Include="Toolbelt.Blazor.HotKeys2" Version="4.1.0.1" />
   </ItemGroup>
 
