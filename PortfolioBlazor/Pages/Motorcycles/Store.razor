@@ -1,0 +1,23 @@
+﻿@page "/motorcycles/store"
+@using PortfolioBlazor.DTO.Models
+@using PortfolioBlazor.Server.BL.Services
+@using PortfolioBlazor.UI.Components.BodyComponents
+@inject IMotorcyclesService MotorcyclesService
+
+@if (motorcycles == null || motorcycles.Count == 0)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <MotorcyclesStoreIndexBody motorcycles="@motorcycles" />
+}
+
+@code {
+    List<Motorcycle> motorcycles = new List<Motorcycle>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        motorcycles = await MotorcyclesService.FetchMotorcyclesAsync();
+    }
+}

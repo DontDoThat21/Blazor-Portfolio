@@ -1,0 +1,18 @@
+﻿@page "/product/index"
+@using PortfolioBlazor.Server.BL.Services
+@using PortfolioBlazor.DTO.Models
+@using PortfolioBlazor.UI.Components.BodyComponents
+@inject IProductsService ProductsService
+
+<div class="product-index-dark">
+    <ProductsIndexBody products="@products"/>
+</div>
+
+@code {
+    List<Product> products = new List<Product>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        products = await ProductsService.FetchProductsAsync();
+    }
+}

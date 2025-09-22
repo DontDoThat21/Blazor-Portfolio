@@ -1,0 +1,16 @@
+﻿@page "/games/index"
+@using PortfolioBlazor.DTO.Models
+@using PortfolioBlazor.Server.BL.Services
+@using PortfolioBlazor.UI.Components.BodyComponents
+@inject IGamesService GamesService
+
+<GamesIndexBody games="@games"></GamesIndexBody>
+
+@code {
+    List<Game> games = new List<Game>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        games = await GamesService.FetchGamesAsync();
+    }
+}

@@ -1,0 +1,126 @@
+﻿@page "/projects/index"
+
+@using PortfolioBlazor.DTO.Models
+@using PortfolioBlazor.Server.BL.Services
+@using System.Linq
+@inject NavigationManager NavManager
+@inject IProjectsService ProjectsService
+
+<div class="container py-3 projects-page">
+    <div class="row align-items-center mb-3 g-2">
+        <div class="col-12 col-md-6">
+            <h2 class="mb-0 text-primary fw-semibold">Projects</h2>
+            <small class="text-muted">Explore projects by language and tech</small>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="input-group shadow-sm">
+                <span class="input-group-text bg-white border-end-0">
+                    <i class="bi bi-search text-secondary"></i>
+                </span>
+                <input type="text" class="form-control border-start-0" placeholder="Search projects by name, language, or URL..." @bind="searchText" @bind:event="oninput" />
+            </div>
+        </div>
+    </div>
+
+    @if (isLoading)
+    {
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+            @for (int i = 0; i < 6; i++)
+            {
+                <div class="col">
+                    <div class="card project-card placeholder-wave">
+                        <div class="ratio ratio-16x9">
+                            <div class="placeholder w-100 h-100"></div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title placeholder-glow"><span class="placeholder col-8"></span></h5>
+                            <p class="card-text placeholder-glow"><span class="placeholder col-6"></span></p>
+                            <div class="d-flex gap-2 mt-2">
+                                <span class="btn btn-sm btn-outline-primary disabled placeholder col-5"></span>
+                                <span class="btn btn-sm btn-outline-secondary disabled placeholder col-5"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else if (filteredProjects is null || filteredProjects.Count == 0)
+    {
+        <div class="text-center text-muted py-5">
+            <i class="bi bi-grid-3x3-gap display-5 d-block mb-3"></i>
+            <div class="fs-5">No projects found</div>
+            <div class="small">Try a different search or clear the filter.</div>
+        </div>
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+            @foreach (var project in filteredProjects)
+            {
+                var detailsPath = $"/Projects/{(project?.Name ?? string.Empty).Replace(" ", string.Empty)}";
+                <div class="col">
+                    <div class="card project-card h-100 shadow-sm">
+                        <a href="@detailsPath" aria-label="Open @project?.Name" class="text-decoration-none">
+                            <div class="ratio ratio-16x9">
+                                <img src="/Images/project/@project?.ProjectPhoto" class="card-img-top project-img" alt="@project?.Name image" loading="lazy" />
+                            </div>
+                        </a>
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <a href="@detailsPath" class="text-decoration-none">
+                                    <h5 class="card-title mb-0 text-truncate text-dark" title="@project?.Name">@project?.Name</h5>
+                                </a>
+                                @if (!string.IsNullOrWhiteSpace(project?.Language))
+                                {
+                                    <a href="@detailsPath" class="text-decoration-none">
+                                        <span class="badge bg-gradient-blue ms-2" title="Language">@project!.Language</span>
+                                    </a>
+                                }
+                            </div>
+                            @if (!string.IsNullOrWhiteSpace(project?.Url))
+                            {
+                                <div class="mt-auto d-flex gap-2 flex-wrap">
+                                    <a class="btn btn-sm btn-outline-secondary" href="@detailsPath" target="_blank" rel="noopener noreferrer" @onclick:stopPropagation="true">
+                                        <i class="bi bi-box-arrow-up-right"></i>
+                                        View Project
+                                    </a>
+                                    <a class="btn btn-sm btn-outline-primary" href="@project!.Url" target="_blank">
+                                        <i class="bi bi-github"></i>
+                                        View GitHub Repo
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    List<Project> projectList = new();
+    string searchText = string.Empty;
+    bool isLoading = true;
+
+    List<Project> filteredProjects => string.IsNullOrWhiteSpace(searchText)
+        ? projectList
+        : projectList.Where(p =>
+            (p.Name?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+            (p.Language?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false) ||
+            (p.Url?.Contains(searchText, StringComparison.OrdinalIgnoreCase) ?? false)
+        ).ToList();
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            projectList = await ProjectsService.FetchProjectsAsync();
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}

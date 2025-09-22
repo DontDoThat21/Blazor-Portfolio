@@ -1,0 +1,17 @@
+﻿@page "/carts/index"
+@using PortfolioBlazor.DTO.Models
+@using PortfolioBlazor.Server.BL.Services
+@using PortfolioBlazor.UI.Components.BodyComponents
+@inject ICartsService CartsService
+
+<CartIndexBody bundles="@bundles"/>
+
+@code {
+    List<ShoppingCartBundle> bundles = new List<ShoppingCartBundle>();
+    
+    protected override async Task OnInitializedAsync()
+    {
+        bundles = await CartsService.FetchCartsAsync();
+    }
+
+}

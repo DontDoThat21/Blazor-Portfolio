@@ -1,0 +1,27 @@
+﻿@page "/home/index"
+@page "/"
+@using System.Configuration
+@using PortfolioBlazor.DTO.Models
+@using PortfolioBlazor.Server.BL.Services
+@using PortfolioBlazor.UI.Components.BodyComponents
+@using PortfolioBlazor.UI.Components.ModelComponents
+
+@inject NavigationManager NavManager
+@inject IPortfolioImagesService PortfolioImageService
+
+<PageTitle>Portfolio</PageTitle>
+
+<HomeIndexBody></HomeIndexBody>
+<div style="padding: 10px">
+    <PortfolioImageComponent pfImages="@pfImageList" />
+</div>
+
+@code {
+
+    List<PortfolioImage> pfImageList = new List<PortfolioImage>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        pfImageList = await PortfolioImageService.FetchPortfolioImagesAsync();
+    }
+}

@@ -1,0 +1,17 @@
+﻿@page "/home/blazordemo"
+@inject IProductsService ProductsService
+
+@using PortfolioBlazor.DTO.Models
+@using PortfolioBlazor.Server.BL.Services
+@using PortfolioBlazor.UI.Components.BodyComponents
+
+<HomeBlazorDemoBody products="@products"/>
+
+@code {
+    List<Product> products = new List<Product>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        products = await ProductsService.FetchProductsAsync();
+    }
+}

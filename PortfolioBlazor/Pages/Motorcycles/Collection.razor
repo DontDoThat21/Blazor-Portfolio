@@ -1,0 +1,23 @@
+﻿@page "/motorcycles/collection"
+@using PortfolioBlazor.DTO.Models
+@using PortfolioBlazor.Server.BL.Services
+@using PortfolioBlazor.UI.Components.BodyComponents
+@inject IMotorcycleVideosService MotorcycleVideosService
+
+@if (videos == null || videos.Count == 0)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <CollectionIndexBody videos="@videos" />
+}
+
+@code {
+    List<MotorcycleVideo> videos = new List<MotorcycleVideo>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        videos = await MotorcycleVideosService.FetchMotorcycleVideosAsync();
+    }
+}

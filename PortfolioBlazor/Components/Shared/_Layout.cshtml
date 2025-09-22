@@ -1,0 +1,190 @@
+﻿@using Microsoft.AspNetCore.Http
+@using Portfolio.Client.BL
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title class="bg-primary">@ViewData["Title"] - Tylor Trub's Portfolio'</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Portfolio.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home2" asp-action="Index">Tylor Trub's Portfolio</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Customer" asp-controller="Home1" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-seperator">
+                            |
+                        </li>                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Projects
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Customer" asp-controller="Projects" asp-action="Index">All Projects</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Customer" asp-controller="Projects" asp-action="MauiTodos">.NET Maui Todo List</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Customer" asp-controller="Projects" asp-action="AngularEmployeeManager">Angular 16 Employee Manager</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Customer" asp-controller="Projects" asp-action="AngularAPI">.NET FW Angular API</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Customer" asp-controller="Projects" asp-action="HotSBot">HotS OCR Bot</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Customer" asp-controller="Projects" asp-action="PythonMaze">Python Maze</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Customer" asp-controller="Projects" asp-action="JavaSystemLocker">Java System Locker</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Customer" asp-controller="Projects" asp-action="WinFormsTodos">Win Forms Todos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Customer" asp-controller="Projects" asp-action="FlickrPhotoSearcher">Flickr Photo Searcher</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Customer" asp-controller="Projects" asp-action="FrameworkWebForms">Student Registration w/ Web Forms</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Customer" asp-controller="Projects" asp-action="CppCalculator">C++ WinForms Calculator</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-seperator">
+                            |
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Motorcycles
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Admin" asp-controller="Motorcycle" asp-action="Index">Motorcycles</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Admin" asp-controller="Motorcycle" asp-action="Store">Store</a>
+                                </li>
+                            </ul>
+                        </li>
+                        @* @if(User.IsInRole(SD.Role_Admin))
+                        { *@
+                        <li class="nav-seperator">
+                            |
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Books
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Admin" asp-controller="Category" asp-action="Index">Book Categories</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" asp-area="Admin" asp-controller="Product" asp-action="Index">Products</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" asp-area="Admin" asp-controller="Company" asp-action="Index">Companies</a>
+                                </li>
+                            </ul>
+                        </li>
+                        @* } *@
+                        <li class="nav-seperator">
+                            |
+                        </li>
+                        <li>
+                            <a class="nav-link" asp-area="Admin" asp-controller="Order" asp-action="Index">Manage Order</a>
+                        </li>
+                        <li class="nav-seperator">
+                            |
+                        </li>
+                        @if (HttpContextAccessor.HttpContext.Session.GetInt32(SD.SessionCart) != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="Customer" asp-controller="Cart" asp-action="Index">
+                                    <i class="bi bi-cart"></i> &nbsp;
+                                    (@HttpContextAccessor.HttpContext.Session.GetInt32(SD.SessionCart))
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="Customer" asp-controller="Cart" asp-action="Index">
+                                    <i class="bi bi-cart"></i> &nbsp;
+                                </a>
+                            </li>
+                        }
+
+                        <li class="nav-seperator">
+                            |
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Games
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Customer" asp-controller="Games" asp-action="Index">Games</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Customer" asp-controller="Games" asp-action="Hangman">Hangman</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" asp-area="Customer" asp-controller="Games" asp-action="SimonSays">Simon Says</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-seperator">
+                            |
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Customer" asp-controller="Home3" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="border-top footer bg-primary text-white-50">
+        <div>
+            &copy; 2024 - Tylor's Portfolio - Made with <i class="bi bi-heart-fill"></i> by Tylor Christian Trub
+        </div>
+    </footer> 
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+    <script src="https://cdn.tiny.cloud/1/dglg1u3d7s2qu7xmi465k28jt6pkuiuwr27b2zjfpy5pp61c/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
