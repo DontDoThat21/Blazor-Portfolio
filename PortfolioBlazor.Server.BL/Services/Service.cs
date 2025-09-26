@@ -22,6 +22,7 @@ namespace Portfolio.Server.BL.Repository
         /// 
         /// Edit: No. No.. NO! :) The systems in question were connected and even normalization wise, logically related.
         /// Do not separate connected contexts. Consult a professional for real advice :)
+        /// Later me (9/26/2025): ROFL ^
         /// </summary>
         /// <param name="db">Portfolio DB.</param> 
         public Service(DbContext db)
