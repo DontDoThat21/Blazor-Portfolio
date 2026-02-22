@@ -11,10 +11,10 @@
             <a class="navbar-brand" href="/">Tylor T's Portfolio</a>
 
             <div class="ms-auto dropdown me-3">
-                <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-outline-light dropdown-toggle" type="button" @onclick="MenuToggle" aria-expanded="@_menuOpen">
                     Menu
                 </button>
-                <ul class="dropdown-menu dropdown-menu-end">
+                <ul class="dropdown-menu dropdown-menu-end @(_menuOpen ? "show" : "")">
                     <li><a class="dropdown-item" href="/Login">Login</a></li>
                     <li><a class="dropdown-item" href="/Register">Register</a></li>
                     <li><a class="dropdown-item" href="/Logout">Log out</a></li>
@@ -83,9 +83,15 @@
 @code 
 {
     bool _drawerOpen = true;
+    bool _menuOpen = false;
 
     void DrawerToggle()
     {
         _drawerOpen = !_drawerOpen;
+    }
+
+    void MenuToggle()
+    {
+        _menuOpen = !_menuOpen;
     }
 }
